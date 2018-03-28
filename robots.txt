@@ -1,0 +1,6 @@
+User-agent: *
+
+Sitemap: http://www.minilotswin.890m.com/sitemap.xml
+
+
+Disallow :

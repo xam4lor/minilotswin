@@ -200,3 +200,28 @@ td, th {
 .popup_button_quit {
 	padding-left: 3px;
 }
+
+.github-button {
+	display: inline-block;
+	padding: .2rem 0.5rem;
+	font-weight: 500;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+	background-color: #3072b3;
+	background-repeat: repeat-x;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #599bdc), color-stop(100%, #3072b3));
+	background-image: -webkit-linear-gradient(top, #599bdc 0, #3072b3 100%);
+	background-image: -moz-linear-gradient(top, #599bdc 0, #3072b3 100%);
+	background-image: -ms-linear-gradient(top, #599bdc 0, #3072b3 100%);
+	background-image: -o-linear-gradient(top, #599bdc 0, #3072b3 100%);
+	background-image: linear-gradient(top, #599bdc 0, #3072b3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bdc', endColorstr='#3072b3', GradientType=0);
+	border: 1px solid #2967a4;
+	border-radius: 6px;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}

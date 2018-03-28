@@ -134,6 +134,7 @@
 					<br />Ce site vous permet de jouer à des mini-jeux simples afin de pouvoir gagner des lots gratuitement.
 					<br />Vous pouvez jouer quinze fois gratuitement par jour et tenter de gagner des lots d'une valeur de 2€ minimum.
 					<br /><br />N'oubliez pas que le site est récent, il est possible que vous rencontriez quelques problèmes ou disfonctionnements. Si c'est le cas, n'hésitez pas et signalez le dans le formulaire présent en bas de chaque page !
+					<br /><br />Si vous êtes développeur, n'hésitez pas à participer au développement du site ou à nous proposer des modifications sur le Github du site : <a class="github-button" href="https://github.com/xam4lor/minilotswin">Voir sur GitHub</a>
 					<br /><br />Pour connaître toutes les informations en temps réel, suivez-nous sur Twitter : <a href="https://twitter.com/minilotswin" class="twitter-follow-button" data-show-count="false" data-size="large">Suivez-nous</a>
 					<br />
 				</p>

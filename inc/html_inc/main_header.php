@@ -87,7 +87,7 @@
 				var d = new Date();
 				d.setTime(d.getTime() + 24*60*60*1000);
 				var expires = "expires=" + d.toUTCString();
-				document.cookie = "displayPopup=false" + ";" + expires + ";";
+				document.cookie = "displayPopup=false" + ";" + expires + ";path=/;";
 				document.getElementById('element_to_display').style = 'display: none';
 			}
 

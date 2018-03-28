@@ -36,6 +36,15 @@ class Config {
 			'sudoku_ticket_price' => 1		// prix d'un ticket de sudoku (en euros)
 		);
 		// ---------------------------------------
+
+
+
+
+		// ---------- COOKIE TEXT ----------
+		$this->popup = array(
+			'cookie_text' => '_cookie-text_', // texte du cookie
+		);
+		// ---------------------------------
 	}
 
 

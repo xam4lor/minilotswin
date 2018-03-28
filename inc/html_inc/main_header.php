@@ -114,7 +114,7 @@
 			<div class="popup_main w3-animate-top" id="element_to_display" style="display: none;">
 				<div class="popup_container">
 					<span class="popup_content">
-						-20% sur le site <a href="http://www.revengexstore.fr">revengexstore</a> avec le code "LOTS20".
+						<?php echo $config->getPopupConfig()['cookie_text'] ?>
 					</span>
 					<span id="popup_button_quit" class="popup_button_quit" onclick="quitCookie()">
 						<a href="#">OK</a>

@@ -103,8 +103,7 @@
 			window.onload = checkIfDisplayCookie;
 		</script>
 
-		<meta name="google-site-verification" content="3_wThmvOf0UDnhNUzTwuOgp3VZaYYNAxJqJSr728I30" />
-		<meta name="google-site-verification" content="7r2mSjfDaMXl1TB1sesMkq-zIBNHLjRdWJVnDQ825x8" />
+		<meta name="google-site-verification" content="-8uS3us6QT8joImRkPHaATxHal5xx9aHCtTbJe1vaDw" />
 	</head>
 
 	<body>

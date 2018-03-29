@@ -83,7 +83,7 @@
 					else {
 						$returnHTML .= '
 						<div class="game-script">
-							<p id="end-script">Vous avez gagné cette partie mais vous n\'avez gagné aucun lot !</p><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href=\'http://rapidtory.com/BnTZ\'"><i class="fa fa-paper-plane"></i> Re-tenter sa chance</button>
+							<p id="end-script">Vous avez gagné cette partie mais vous n\'avez gagné aucun lot !</p><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.reload(false);"><i class="fa fa-paper-plane"></i> Re-tenter sa chance</button>
 							<p id="game-javascript">
 								console.log("DEBUG : Player won / Pas lot. Vous avez gagné cette partie mais vous n\'avez gagné aucun lot ! Raffraichissez la page pour re-tenter votre chance.");
 							</p>

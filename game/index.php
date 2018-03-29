@@ -59,7 +59,7 @@
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bénéficiez de vos <?php echo $parties_max ?> parties gratuites par jour permettant de gagner des <b>clés steam</b> ou encore des <b>comptes spotify</b>, <b>netflix</b>, ...
 						<br />Cependant le taux de chance de gagner un lot si vous gagnez une partie est très faible : il est actuellement de <b><?php echo $params->getWinPercentage(); ?>%</b>.<?php echo $additional_free_text ?></p>
 
-						<button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='http://rapidtory.com/BnTZ'"><i class="fa fa-paper-plane"></i><?php echo $button_free_text ?></button>
+						<button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='/game/free_games/#game'"><i class="fa fa-paper-plane"></i><?php echo $button_free_text ?></button>
 					</div>
 
 					<div class="w3-half">

@@ -31,7 +31,7 @@
 
 				<?php
 					if((isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['text'])) || (isset($_POST['text']) && $session->isUserSession())) {
-						if(filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL) || $session->isUserSession()) {
+						if($session->isUserSession() || filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL)) {
 							if($session->isUserSession()) {
 								$req = $bdd->prepare("INSERT INTO requetes_contact(pseudo, email, message, date_post) VALUES (:pseudo, :email, :message, NOW())");
 								$req->execute(array('pseudo' => $session->getUserSession()['username'], 'email' => $session->getUserSession()['email'], 'message' => htmlspecialchars($_POST['text'])));

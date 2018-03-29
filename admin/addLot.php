@@ -10,7 +10,7 @@
 
 	TYPE DE CLE BDD (key_type) :
 	   -   0  --->  clés gratuites
-	   
+	   -   1  --->  clés payantes
 	*/
 
 ?>

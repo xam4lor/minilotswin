@@ -7,54 +7,11 @@
 
 	
 	<url>
-		<loc>http://www.minilotswin.890m.com/index.php</loc>
-	</url>
-
-	<url>
-		<loc>http://www.minilotswin.890m.com/maintenance.html</loc>
+		<loc>https://minilotswin.000webhostapp.com/index.php</loc>
 	</url>
 
 
 	<url>
-		<loc>http://www.minilotswin.890m.com/account/connexion.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/account/deconnexion.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/account/index.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/account/inscription.php</loc>
-	</url>
-
-
-	<url>
-		<loc>http://www.minilotswin.890m.com/errors/error_400.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/errors/error_401.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/errors/error_403.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/errors/error_404.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/errors/error_500.php</loc>
-	</url>
-	<url>
-		<loc>http://www.minilotswin.890m.com/errors/error_503.php</loc>
-	</url>
-
-
-	<url>
-		<loc>http://www.minilotswin.890m.com/game/index.php</loc>
-	</url>
-
-
-	<url>
-		<loc>http://www.minilotswin.890m.com/win_page/index.php</loc>
+		<loc>https://minilotswin.000webhostapp.com/account/connexion.php</loc>
 	</url>
 </urlset>

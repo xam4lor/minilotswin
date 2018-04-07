@@ -18,8 +18,8 @@ class Session {
 	private $params;
 
 
-	public function __construct($bdd, $params){
-		session_start();
+	public function __construct($bdd, $params) {
+		@session_start();
 
 		$this->bdd = $bdd;
 		$this->params = $params;

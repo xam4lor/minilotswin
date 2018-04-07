@@ -116,7 +116,7 @@
 						<?php echo $config->getPopupConfig()['cookie_text'] ?>
 					</span>
 					<span id="popup_button_quit" class="popup_button_quit" onclick="quitCookie()">
-						<a href="#">OK</a>
+						<a href="">OK</a>
 					</span>
 				</div>
 			</div>

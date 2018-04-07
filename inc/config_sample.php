@@ -17,12 +17,21 @@ class Config {
 	private $parameters_config;
 
 	public function __construct() {
-		// local
-		$this->app_config = array(
-			'host' => 'mysql:host=_host_;dbname=_dbname_;charset=utf8', // host de connexion à la BDD et nom de la BDD
-			'user' => '_user_', 										// nom d'utilisateur
-			'password' => '_password_' 									// mot de passe
-		);
+		// ---------- APP CONFIG ----------
+		if (in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1','localhost'))) { 		// --- localhost ---
+			$this->app_config = array(
+				'host' => 'mysql:host=_local-host_;dbname=_local-dbname_;charset=utf8', 		// host de connexion à la BDD et nom de la BDD
+				'user' => '_local-user_', 														// nom d'utilisateur
+				'password' => '_local-password_' 												// mot de passe
+			);
+		}
+		else {																					// --- serveur ---
+			$this->app_config = array(
+				'host' => 'mysql:host=_server-host_;dbname=_server-dbname_;charset=utf8', 		// host de connexion à la BDD et nom de la BDD
+				'user' => '_server-user_', 														// nom d'utilisateur
+				'password' => '_server-password_' 												// mot de passe
+			);
+		}
 		// --------------------------------
 
 		

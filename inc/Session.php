@@ -176,6 +176,7 @@ class Session {
 
 		while ($donnees = $req->fetch()) {
 			if(intval($donnees['banned'])) return -1;
+			if(!intval($donnees['account_validated'])) return -2;
 			
 			$this->setUserSession($donnees);
 			return 1;
@@ -195,12 +196,41 @@ class Session {
 			return false;
 		}
 
-		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0)");
-		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email));
+		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, account_validated, token) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, 1, :token)");
+		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => ''));
 
 		$this->connectUser($username, $password);
 
 		return true;
+	}
+
+
+	public function generateTokenForMail($to) {
+		$token = $this->generateRandomString(20);
+
+		$subject = 'Validation de votre compte sur MiniLotsWin';
+
+		$message = '
+			<html>
+				<head>
+					<title>Validation de votre compte sur MiniLotsWin</title>
+				</head>
+
+				<body>
+					<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="https://minilotswin.000webhostapp.com/account/confirm.php?token=' . $token . '">cliquez</a></p>
+				</body>
+			</html>
+		';
+
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$headers .= 'From: MiniLotsWin <minilotswin@gmail.com>' . "\r\n";
+		$headers .= 'Reply-To: MiniLotsWin <minilotswin@gmail.com>' . "\r\n";
+		$headers .= 'X-Mailer: PHP/' . phpversion();
+
+		mail($to, $subject, $message, $headers);
+
+		return $token;
 	}
 
 
@@ -225,4 +255,17 @@ class Session {
 		return "Votre mot de passe a bien été modifié.";
 	}
 	// ---------------
+
+
+	public function generateRandomString($length) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+
+		return $randomString;
+	}
 }

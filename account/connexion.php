@@ -24,6 +24,9 @@
 			if($isConnected == -1) {
 				$error_message = "<p class='error-message'>Vous avez été banni du site conformément à nos <a href=\"/account/cgu.php#about\" class=\"w3-hover-text-green\">Conditions Générales d'Utilisation</a>.</p>";
 			}
+			else if($isConnected == -2) {
+				$error_message = "<p class='error-message'>Votre compte n'a pas encore été validé, veuillez cliquer sur le lien présent dans le mail de confirmation que nous vous avons envoyé.</p>";
+			}
 			else if($isConnected) {
 				$show_error = false;
 		?>

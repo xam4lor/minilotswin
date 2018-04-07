@@ -32,7 +32,7 @@ class Session {
 	}
 
 	public function getUserSession() {
-		return $_SESSION['user'];
+		return isset($_SESSION['user']) ? $_SESSION['user'] : null;
 	}
 
 	public function isUserSession() {

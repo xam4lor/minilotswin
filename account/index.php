@@ -3,7 +3,10 @@
 	
 
 	if(!$session->isUserSession()) {
-		header('Location: http://www.minilotswin.890m.com');
+		?>
+		<meta http-equiv="Refresh" content="0; URL=/">
+		<?php
+		exit();
 	}
 
 

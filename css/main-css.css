@@ -225,3 +225,11 @@ td, th {
 	-o-transition: none;
 	transition: none;
 }
+
+
+.cgu-title {
+	text-decoration: underline;
+	font-size: 1.325rem;
+	text-align: center;
+	vertical-align: center;
+}

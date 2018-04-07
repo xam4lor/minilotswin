@@ -21,7 +21,7 @@
 			
 			<p>Design by xam4lor
 				<br />
-					&copy; 2018 MiniLots - v4.0 - <a href="mailto:xam4lor@gmail.com" title="email" target="_blank" class="w3-hover-text-green">xam4lor@gmail.com</a>
+					&copy; 2018 MiniLots - v4.0 - <a href="mailto:xam4lor@gmail.com" title="email" target="_blank" class="w3-hover-text-green">xam4lor@gmail.com</a> - <a href="/account/cgu.php#about" class="w3-hover-text-green">Conditions Générales d'Utilisation</a>
 			</p>
 		</footer>
 	</body>

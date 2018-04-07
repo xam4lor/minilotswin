@@ -22,7 +22,7 @@
 			$isConnected = $session->connectUser(htmlspecialchars($_POST['pseudo']), $encryption_key->cryptPassword(htmlspecialchars($_POST['password'])));
 
 			if($isConnected == -1) {
-				$error_message = "<p class='error-message'>Vous avez été banni du site.</p>";
+				$error_message = "<p class='error-message'>Vous avez été banni du site conformément à nos <a href=\"/account/cgu.php#about\" class=\"w3-hover-text-green\">Conditions Générales d'Utilisation</a>.</p>";
 			}
 			else if($isConnected) {
 				$show_error = false;

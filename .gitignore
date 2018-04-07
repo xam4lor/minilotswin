@@ -1,6 +1,3 @@
 # IGNORE ALL CONFIG FILES
 *.htaccess
 config.php
-
-# IGNORE ALL TEST FILES
-listener.php

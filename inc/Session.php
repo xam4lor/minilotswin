@@ -199,8 +199,6 @@ class Session {
 		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token)");
 		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email)));
 
-		$this->connectUser($username, $password);
-
 		return true;
 	}
 
@@ -231,6 +229,27 @@ class Session {
 		mail($to, $subject, $message, $headers);
 
 		return $token;
+	}
+
+
+	public function confirmAccountFromToken($token) {
+		$req = $this->bdd->prepare("SELECT * FROM account WHERE token=:token AND account_validated=0");
+		$req->execute(array('token' => $token));
+		$found = false;
+
+		while ($donnees = $req->fetch()) {
+			$found = true;
+			$id = $donnees['id'];
+		}
+
+		if($found) {
+			$req = $this->bdd->prepare("UPDATE account SET account_validated=1 WHERE id=:id"); // update account_validated
+			$req->execute(array('id' => $id));
+
+			return true;
+		}
+
+		return false;
 	}
 
 

@@ -15,7 +15,7 @@
 
 	if($session->isUserSession() || !isset($_GET['token'])) {
 		?>
-		<meta http-equiv="Refresh" content="0; URL=/account/">
+		<meta http-equiv="Refresh" content="0; URL=/account/#about">
 
 		<div class="w3-content w3-container w3-padding-64">
 			<h3 class="w3-center" id="game-title">REDIRECTION</h3>

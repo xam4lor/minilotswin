@@ -10,6 +10,6 @@
 		</div>
 
 <?php
-	include_once '../inc/html_inc/contact.php';
-	include_once '../inc/html_inc/footer.php';
+	include_once realpath(dirname(__FILE__) . '/../inc/html_inc/contact.php');
+	include_once realpath(dirname(__FILE__) . '/../inc/html_inc/footer.php');
 ?>

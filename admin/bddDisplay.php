@@ -3,7 +3,17 @@
 	
 
 	if(!$session->isUserSession() || $session->getUserSession()['admin'] != 1) {
-		header('Location: http://www.minilotswin.890m.com');
+		?>
+		<meta http-equiv="Refresh" content="0; URL=/">
+
+		<div class="w3-content w3-container w3-padding-64">
+			<h3 class="w3-center" id="game-title">REDIRECTION</h3>
+			
+			<p id="game-text">Vous ne pouvez pas accéder à cette page.</p>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+		</div>
+		<?php
+		exit();
 	}
 ?>
 

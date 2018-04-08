@@ -3,7 +3,17 @@
 	
 
 	if($session->isUserSession()) {
-		header("Location: /account/");
+		?>
+		<meta http-equiv="Refresh" content="0; URL=/account/">
+
+		<div class="w3-content w3-container w3-padding-64">
+			<h3 class="w3-center" id="game-title">REDIRECTION</h3>
+			
+			<p id="game-text">Vous ne pouvez pas accéder à cette page.</p>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+		</div>
+		<?php
+		exit();
 	}
 ?>
 
@@ -25,7 +35,8 @@
 				$error_message = "<p class='error-message'>Vous avez été banni du site conformément à nos <a href=\"/account/cgu.php#about\" class=\"w3-hover-text-green\">Conditions Générales d'Utilisation</a>.</p>";
 			}
 			else if($isConnected == -2) {
-				$error_message = "<p class='error-message'>Votre compte n'a pas encore été validé, veuillez cliquer sur le lien présent dans le mail de confirmation que nous vous avons envoyé.</p>";
+				$error_message = "<p class='error-message'>Votre compte n'a pas encore été validé, veuillez cliquer sur le lien présent dans le mail de confirmation que nous vous avons envoyé.
+					<br />Si vous ne voyez pas ce mail, veuillez attendre quelques minutes et, si le mail ne s'affiche toujours pas, contacter un administrateur à l'adresse en bas de page.</p>";
 			}
 			else if($isConnected) {
 				$show_error = false;

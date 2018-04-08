@@ -1,8 +1,6 @@
 <?php
 	include_once 'gameDatas/Sudoku.php';
 
-
-
 	include_once realpath(dirname(__FILE__) . "/../../../inc/html_inc/main_php.php");
 
 

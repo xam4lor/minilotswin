@@ -13,7 +13,7 @@
 		<meta name="keywords" content="jeux lots big-lots gratuit cadeau gagner mini-jeu free gift game fun" />
 		<meta name="Resource-type" content="Document">
 
-		<link rel="icon" type="image/png" href="../imgs/favicon.ico" />
+		<link rel="icon" type="image/png" href="/imgs/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="/css/main-css.css" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="/css/w3.css" />

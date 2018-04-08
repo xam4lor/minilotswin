@@ -196,8 +196,8 @@ class Session {
 			return false;
 		}
 
-		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, account_validated, token) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, 1, :token)");
-		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => ''));
+		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token)");
+		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email)));
 
 		$this->connectUser($username, $password);
 
@@ -206,7 +206,7 @@ class Session {
 
 
 	public function generateTokenForMail($to) {
-		$token = $this->generateRandomString(20);
+		$token = $this->generateRandomString(60);
 
 		$subject = 'Validation de votre compte sur MiniLotsWin';
 

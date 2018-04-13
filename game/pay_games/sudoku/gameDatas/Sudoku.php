@@ -29,7 +29,7 @@
 
 		public function newRound($session, $params, $encryption_key, $datas) {
 			if($datas == "recupere_data") {
-				return $this->print_sudoku($this->sudoku_user, $provArray);
+				return $this->print_sudoku($this->sudoku_user, @$provArray);
 			}
 
 			$provArray = array();
@@ -169,8 +169,8 @@
 				$html .= "<tr bgcolor = \"white\" align = \"center\">";
 				
 				for($y=0;$y<=8;$y++){
-					if($sudoku[$x * 9 + $y] != $this->neutralVal) {
-						$html .= "<td class='sudoku-td' id='element-" . (string) ($x *9+$y) . "'>" . $values[$x *9+$y] . "</td>";
+					if(@$sudoku[$x * 9 + $y] != $this->neutralVal) {
+						$html .= "<td class='sudoku-td' id='element-" . (string) ($x *9+$y) . "'>" . @$values[$x *9+$y] . "</td>";
 					}
 					else {
 						if($values[$x * 9 + $y] == $this->neutralVal) {
@@ -339,4 +339,3 @@
 		}
 	}
 
-	

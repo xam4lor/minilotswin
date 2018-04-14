@@ -312,6 +312,7 @@
 			
 		 
 		function solve($sudoku){
+			$x = 0;
 			$start = microtime();
 			$saved = array();	
 			$saved_sud = array();

@@ -42,8 +42,8 @@
 			else {
 				$pass = $encryption_key->cryptPassword($_POST['password']);
 
-				$connected = $session->createAccount(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['email']), $pass);
-				$error_msg = "Un compte avec ce nom d'utilisateur ou cette adresse mail existe déjà.";
+				$connected = $session->createAccount(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['email']), $pass, $_SERVER['REMOTE_ADDR']);
+				$error_msg = "Un compte avec ce nom d'utilisateur ou cette adresse mail existe déjà, ou vous avez déjà créé un compte avec cette IP.";
 			}
 
 			if($connected) {
@@ -72,7 +72,7 @@
 				<p class="error-message">
 					<?php
 						if(isset($error_msg) && $error_msg != "") {
-							echo $error_msg . '<br />Veuillez rentrer une adresse mail valable, cette dernière servant à vous attribuer vos lots.';
+							echo $error_msg . '<br />Veuillez donc rentrer une adresse mail valable et unique, cette dernière servant à vous attribuer vos lots.';
 						}
 						else {
 							echo "Veuillez rentrer une adresse mail valable, cette dernière servant à vous attribuer vos lots.";

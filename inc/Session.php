@@ -188,16 +188,16 @@ class Session {
 
 
 
-	public function createAccount($username, $email, $password) {
-		$req = $this->bdd->prepare("SELECT * FROM account WHERE username=:username OR email=:email");
-		$req->execute(array('username' => $username, 'email' => $email));
+	public function createAccount($username, $email, $password, $ip) {
+		$req = $this->bdd->prepare("SELECT * FROM account WHERE username=:username OR email=:email OR ip=:ip");
+		$req->execute(array('username' => $username, 'email' => $email, 'ip' => $ip));
 
 		while ($donnees = $req->fetch()) {
 			return false;
 		}
 
-		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token)");
-		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email)));
+		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token, :ip)");
+		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email), 'ip' => $ip));
 
 		return true;
 	}

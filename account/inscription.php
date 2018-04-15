@@ -31,6 +31,7 @@
 		if(isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password_conf'])) {
 			$error_msg = "";
 			$connected = false;
+			$account_valid_mode = $config->getAccountConfig()['account_valid_mode'];
 
 
 			if(htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['password_conf'])) {
@@ -42,23 +43,59 @@
 			else {
 				$pass = $encryption_key->cryptPassword($_POST['password']);
 
-				$connected = $session->createAccount(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['email']), $pass, $_SERVER['REMOTE_ADDR']);
+				$connected = $session->createAccount(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['email']), $pass, $_SERVER['REMOTE_ADDR'], $account_valid_mode);
 				$error_msg = "Un compte avec ce nom d'utilisateur ou cette adresse mail existe déjà, ou vous avez déjà créé un compte avec cette IP.";
 			}
 
 			if($connected) {
-		?>
-			<div>
-			<!-- Container -> A propos du site -->
-				<div class="w3-content w3-container w3-padding-64" id="about">
-					<h3 class="w3-center">MAIL DE CONFIRMATION</h3>
-					<p>Vous vous êtes bien inscrit. Veuillez maintenant confirmer votre compte en cliquant sur le lien contenu dans le mail envoyé à l'adresse '<?php echo $_POST['email'] ?>'.</p>
-
-					<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i>Cliquez ici pour retourner à l'accueil</button>
-				</div>
-			</div>
-		<?php
 				$dispForm = false;
+
+				if($account_valid_mode == 0) {
+					?>
+						<div id="about">
+							<div class="w3-content w3-container w3-padding-64">
+								<h3 class="w3-center">COMPTE CONFIRME</h3>
+								
+								<p>Votre compte a bien été confirmé, cliquez sur le bouton suivant pour vous rediriger vers la page de connexion afin de vous-y connecter.</p>
+								<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/account/connexion.php#about'"><i class="fa fa-paper-plane"></i> Connexion</button>
+							</div>
+						</div>
+					<?php
+				}
+				else if($account_valid_mode == 1) {
+					?>
+						<div id="about">
+							<div class="w3-content w3-container w3-padding-64" id="about">
+								<h3 class="w3-center">MAIL DE CONFIRMATION</h3>
+								<p>Vous vous êtes bien inscrit. Veuillez maintenant confirmer votre compte en cliquant sur le lien contenu dans le mail envoyé à l'adresse '<?php echo $_POST['email'] ?>'.</p>
+
+								<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i>Cliquez ici pour retourner à l'accueil</button>
+							</div>
+						</div>
+					<?php
+				}
+				else if($account_valid_mode == 2) {
+					?>
+						<div id="about">
+							<div class="w3-content w3-container w3-padding-64" id="about">
+								<h3 class="w3-center">MAIL DE CONFIRMATION</h3>
+
+								<p>Si vous n'êtes pas redirigé dans quelques secondes, veuillez cliquer sur le bouton suivant :
+									<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='confirm.php'"><i class="fa fa-paper-plane"></i> Cliquez ici</button>
+								</p>
+
+								<script type="text/javascript">
+									window.location.replace("confirm.php");
+								</script>
+
+								<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i>Cliquez ici pour retourner à l'accueil</button>
+							</div>
+						</div>
+					<?php
+				}
+				else {
+					$dispForm = true;
+				}
 			}
 		}
 

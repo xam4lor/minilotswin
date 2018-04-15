@@ -188,7 +188,7 @@ class Session {
 
 
 
-	public function createAccount($username, $email, $password, $ip) {
+	public function createAccount($username, $email, $password, $ip, $account_mode) {
 		$req = $this->bdd->prepare("SELECT * FROM account WHERE username=:username OR email=:email OR ip=:ip");
 		$req->execute(array('username' => $username, 'email' => $email, 'ip' => $ip));
 
@@ -196,29 +196,55 @@ class Session {
 			return false;
 		}
 
-		$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token, :ip)");
-		$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email), 'ip' => $ip));
+
+
+
+		if($account_mode == 0) {
+			$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 1, NULL, :ip)");
+			$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'ip' => $ip));
+		}
+
+		else if($account_mode == 1 || $account_mode == 2) {
+			$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token, :ip)");
+			$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email, $account_mode), 'ip' => $ip));
+		}
 
 		return true;
 	}
 
 
-	public function generateTokenForMail($to) {
+	public function generateTokenForMail($to, $account_mode) {
 		$token = $this->generateRandomString(60);
 
 		$subject = 'Validation de votre compte sur MiniLotsWin';
+		$message = '';
 
-		$message = '
-			<html>
-				<head>
-					<title>Validation de votre compte sur MiniLotsWin</title>
-				</head>
+		if($account_mode == 1) {
+			$message = '
+				<html>
+					<head>
+						<title>Validation de votre compte sur MiniLotsWin</title>
+					</head>
 
-				<body>
-					<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="https://minilotswin.000webhostapp.com/account/confirm.php?token=' . $token . '">cliquez</a></p>
-				</body>
-			</html>
-		';
+					<body>
+						<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="https://minilotswin.000webhostapp.com/account/confirm.php?token=' . $token . '#about">cliquez</a></p>
+					</body>
+				</html>
+			';
+		}
+		else if($account_mode == 2) {
+			$message = '
+				<html>
+					<head>
+						<title>Validation de votre compte sur MiniLotsWin</title>
+					</head>
+
+					<body>
+						<p>Entrez ce token sur le site pour valider votre compte : "' . $token . '".</p>
+					</body>
+				</html>
+			';
+		}
 
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

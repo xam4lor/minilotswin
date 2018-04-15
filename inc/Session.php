@@ -240,7 +240,7 @@ class Session {
 					</head>
 
 					<body>
-						<p>Entrez ce token sur le site pour valider votre compte : "' . $token . '".</p>
+						<p>Entrez ce code de validation sur le site pour valider votre compte : "' . $token . '".</p>
 					</body>
 				</html>
 			';

@@ -65,9 +65,9 @@
 					<div class="w3-half">
 						<h4 class="w3-center" style="text-decoration: underline;">Parties payantes : </h4>
 
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Achetez des parties et soyez sûr à <b>100%</b> de gagner de <b>nombreux lots</b> comme des <b>clés steam</b>, des <b>clés CS:GO</b> et cela pour des petits montants d'<b>environ 1 &euro;</b>.</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Achetez des parties et soyez sûr à <b>100%</b> de gagner de <b>nombreux lots</b> comme des <b>clés steam</b> d'une valeur moyenne de 10&euro;, ou encore des biens matériels, et cela seulement pour des sommes aux alentours de 1&euro; !</p>
 
-						<button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='#'"><i class="fa fa-paper-plane"></i> En développement</button>
+						<button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='/game/pay_games/#game'"><i class="fa fa-paper-plane"></i> Partie payante</button>
 					</div>
 				</div>
 			</div>

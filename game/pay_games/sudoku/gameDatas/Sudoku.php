@@ -1,4 +1,6 @@
 <?php
+	// LIGNES : 143 - 133 - 123 - 305
+
 	class Sudoku {
 		private $valuesNbToSub; //nombre de valeurs à retirer de la grille
 

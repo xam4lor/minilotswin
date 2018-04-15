@@ -102,7 +102,7 @@
 						$req2->execute(array('s_left' => ($parties_sudoku_left + 1), 'id' =>$user_id[1]));
 					}
 
-					$req3 = $bdd->prepare("INSERT INTO payments(receveur_infos, txn_id, txn_type, paiement_gross, paiement_currency, paiement_fee, paiement_quantity, paiement_date, payer_id, payer_email, payer_names, custom) VALUES (:receveur_infos, :txn_id, :txn_type, :paiement_gross, :paiement_currency, :paiement_fee, :paiement_quantity, :paiement_date, :payer_id, :payer_email, :payer_names, :custom)");
+					$req3 = $bdd->prepare("INSERT INTO payments(receveur_infos, txn_id, txn_type, paiement_gross, paiement_currency, paiement_fee, paiement_quantity, paiement_date, payer_id, payer_email, payer_names, custom, lot_added) VALUES (:receveur_infos, :txn_id, :txn_type, :paiement_gross, :paiement_currency, :paiement_fee, :paiement_quantity, :paiement_date, :payer_id, :payer_email, :payer_names, :custom, 0)");
 					$req3->execute(array('receveur_infos' => $receveur_infos, 'txn_id' => $txn_id, 'txn_type' => $txn_type, 'paiement_gross' => $paiement_gross, 'paiement_currency' => $paiement_currency, 'paiement_fee' => $paiement_fee, 'paiement_quantity' => $paiement_quantity, 'paiement_date' => $paiement_date, 'payer_id' => $payer_id, 'payer_email' => $payer_email, 'payer_names' => $payer_names, 'custom' => $custom_var_raw));
 
 					

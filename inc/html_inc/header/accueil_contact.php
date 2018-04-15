@@ -17,7 +17,7 @@
 				<a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
 				
 				<?php
-					include 'navbar/navbar-phone.php';
+					include realpath(dirname(__FILE__) . "/../navbar/navbar-phone.php");
 				?>
 			</div>
 		</div>

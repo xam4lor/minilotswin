@@ -28,13 +28,17 @@
 
 
 	<?php
+		$error_msg = "";
+
 		if(isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password_conf'])) {
-			$error_msg = "";
 			$connected = false;
 			$account_valid_mode = $config->getAccountConfig()['account_valid_mode'];
 
 
-			if(htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['password_conf'])) {
+			if($_POST['cgu'] != "on") {
+				$error_msg = "Vous devez accepter les Conditions Générales d'Utilisation.";
+			}
+			else if(htmlspecialchars($_POST['password']) != htmlspecialchars($_POST['password_conf'])) {
 				$error_msg = "Les mots de passe ne correspondent pas.";
 			}
 			else if(!filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL)) {
@@ -109,7 +113,7 @@
 				<p class="error-message">
 					<?php
 						if(isset($error_msg) && $error_msg != "") {
-							echo $error_msg . '<br />Veuillez donc rentrer une adresse mail valable et unique, cette dernière servant à vous attribuer vos lots.';
+							echo $error_msg;
 						}
 						else {
 							echo "Veuillez rentrer une adresse mail valable, cette dernière servant à vous attribuer vos lots.";
@@ -135,6 +139,12 @@
 							<input class="w3-input w3-border" type="password" placeholder="Confirmez le mot de passe" required name="password_conf" />
 						</div>
 					</div>
+
+					<div class="w3-row-padding w3-center" style="margin:0 -16px 8px -16px">
+						<label><input class="w3-border" type="checkbox" required name="cgu" /><span style="padding: 8px;"></span>J'ai lu et j'accepte les <a class="w3-hover-text-green" href="/account/cgu.php#about">Conditions Générales d'Utilisation</a></label>
+					</div>
+
+
 
 					<button class="bords-ronds w3-button w3-black w3-right w3-section" type="submit">
 						<i class="fa fa-paper-plane"></i> INSCRIPTION

@@ -77,7 +77,7 @@
 
 
 								if($_POST['useNb'] <= -1) { //CLE INFINIE -> définie sur maxint
-									$useNb = PHP_INT_MAX;
+									$useNb = 2147483647;
 								}
 								else {
 									$useNb = intval($_POST['useNb']);

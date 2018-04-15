@@ -103,25 +103,33 @@
 											if($arrayDatas[$i] == $session->getUserSession()['email'] && $cles_number_display <= 30) { //si mail correspond
 												$cles_number_display++;
 
-												if(strcmp($donnees['type'], "cle")) { //CAS CLE
+												if($donnees['type'] === 'cle') { //CAS CLE
 													?>
-												<tr>
-													<td>Clé</td>
-													<td><?php echo $donnees['plateforme'] ?></td>
-													<td colspan="2"><b>Clé :</b> <?php echo $donnees['cle'] ?></td>
-												</tr>
+														<tr>
+															<td>Clé</td>
+															<td><?php echo $donnees['plateforme'] ?></td>
+															<td colspan="2"><b>Clé :</b> <?php echo $donnees['cle'] ?></td>
+														</tr>
 													<?php
 												}
-												else { //CAS COMPTE
+												else if($donnees['type'] === 'account') { //CAS COMPTE
 													$split_cle = explode('§§', $donnees['cle']);
-
 													?>
-												<tr>
-													<td>Compte</td>
-													<td><?php echo $donnees['plateforme'] ?></td>
-													<td><b>Username :</b> <?php echo $split_cle[0] ?></td>
-													<td><b>Password :</b> <?php echo $split_cle[1] ?></td>
-												</tr>
+														<tr>
+															<td>Compte</td>
+															<td><?php echo $donnees['plateforme'] ?></td>
+															<td><b>Username :</b> <?php echo $split_cle[0] ?></td>
+															<td><b>Password :</b> <?php echo $split_cle[1] ?></td>
+														</tr>
+													<?php
+												}
+												else {
+													?>
+														<tr>
+															<td>Erreur</td>
+															<td>Erreur</td>
+															<td colspan="2">Veuillez contacter un administrateur</td>
+														</tr>
 													<?php
 												}
 											}

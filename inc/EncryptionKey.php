@@ -3,19 +3,24 @@
 class EncryptionKey {
 	static $instance;
 
-	static function getInstance() {
+	static function getInstance($config) {
 		if(!self::$instance) {
-			self::$instance = new EncryptionKey();
+			self::$instance = new EncryptionKey($config);
 		}
 		return self::$instance;
 	}
 
 	
+	private $config;
+
+	public function __construct($config) {
+		$this->config = $config;
+	}
+
+
 
 	public function getEncryptionKey() {
-		$key = "uc-482$rj+yG-pYid~@]xji8z";
-
-		return $key;
+		return $this->config['lots_key_encryption'];
 	}
 
 

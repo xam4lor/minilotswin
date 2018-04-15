@@ -119,7 +119,7 @@
 				<div class="w3-content w3-container w3-padding-64">
 					<h3 class="w3-center" id="game-title">TICKET DE SUDOKU</h3>
 
-					<p id="game-text">Cliquez sur le bouton suivant pour acheter 1 ticket de sudoku pour <b><?php echo $params->getSudokuTicketPrice(); ?>&euro;</b> et gagner <b>100 clés steam</b> ainsi qu'<b>une clé CS:GO</b>.</p>
+					<p id="game-text">Cliquez sur le bouton suivant pour acheter 1 ticket de sudoku pour <b><?php echo $params->getSudokuTicketPrice(); ?>&euro;</b> et gagner <b>une clé Steam</b> ou <b>un bien matériel</b>.</p>
 
 					<center>
 						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">

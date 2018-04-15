@@ -60,7 +60,7 @@
 			<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
 				<h4 class="w3-center" style="text-decoration: underline;">Sudoku : </h4>
 
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;Achetez une partie de Sudoku et soyez sûr à <b>100%</b> de gagner <b>100 clés steam</b> et <b>une clé CS:GO</b>.</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;Achetez une partie de Sudoku et soyez sûr à <b>100%</b> de gagner <b>une clé Steam</b> ou <b>un bien matériel</b>.</p>
 
 				<button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='sudoku/#game'"><i class="fa fa-paper-plane"></i> Acheter une partie</button>
 			</div>

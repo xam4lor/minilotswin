@@ -240,7 +240,7 @@ class Session {
 					</head>
 
 					<body>
-						<p>Entrez ce code de validation sur le site pour valider votre compte : "' . $token . '".</p>
+						<p>Entrez ce code de validation sur le site pour valider votre compte : "' . $token . '" à la page sur laquelle vous avez été redirigé (si vous n\'avez pas été redrigé, veuillez <a href="https://minilotswin.000webhostapp.com/account/confirm.php#about">cliquer ici</a>.</p>
 					</body>
 				</html>
 			';

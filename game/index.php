@@ -67,7 +67,8 @@
 
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Achetez des parties et soyez sûr à <b>100%</b> de gagner de <b>nombreux lots</b> comme des <b>clés steam</b>, ou encore des biens matériels, et cela seulement pour des sommes aux alentours de 1&euro; !</p>
 
-						<button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='/game/pay_games/#game'"><i class="fa fa-paper-plane"></i> Partie payante</button>
+						<!-- <button class="bords-ronds w3-button w3-black w3-section w3-center" onclick="document.location.href='/game/pay_games/#game'"><i class="fa fa-paper-plane"></i> Partie payante</button> -->
+						<button class="bords-ronds w3-button w3-black w3-section w3-center"><i class="fa fa-paper-plane"></i> En développement</button>
 					</div>
 				</div>
 			</div>

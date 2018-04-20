@@ -46,7 +46,7 @@
 			}
 
 			if($this->sudoku_answer == $provArray) { // Fin de partie
-				unset($_SESSION['game_save_pay']);
+				unset($_SESSION['game_save_pay_1']);
 
 				$_SESSION['has_win'] = $_SERVER['REMOTE_ADDR'] . $encryption_key->getEncryptionKey() . '&lot_key_type=1';
 
@@ -55,13 +55,12 @@
 					<div class="game-script">
 						<p id="end-script">Vous avez gagné cette partie et avez gagné un lot ! Si vous n\'êtes pas redirigé dans quelques secondes, veuillez contacter un administrateur puis cliquer sur le bouton suivant :<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href=\'/win_page#lots\'"><i class="fa fa-paper-plane"></i> Cliquez ici</button>
 						<p id="game-javascript">
-								console.log("DEBUG : Player won / Lot gagné. Vous avez gagné cette partie et avez gagné un lot ! Si vous n\'êtes pas redirigé dans quelques secondes, veuillez contacter un administrateur puis redirigez vous manuellement vers \'http://www.minilotswin.890m.com/win_page/\'.");
-								window.location.replace("/win_page#lots");
+							window.location.replace("/win_page#lots");
 						</p>
 					</div>';
 			}
 
-			$_SESSION['game_save_pay'] = $this;
+			$_SESSION['game_save_pay_1'] = $this;
 			$this->gameText = "Vos choix sont incorrects, veuillez essayer une autre combinaison. Si vous devez recharger la page, veuillez noter vos dernières réponses car ces dernières seront supprimées.";
 
 			return $this->print_sudoku($this->sudoku_user, $provArray);

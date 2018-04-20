@@ -144,19 +144,33 @@ class Session {
 		return $this->getKeyNumberByType(1);
 	}
 
+	public function getMorpionKeyNumber() { // RETOURNE NOMBRE CLES DE MORPION RESTANTES
+		return $this->getKeyNumberByType(2);
+	}
 
 
 
-	public function getSudokyPartyLeftNumber() {
-		$req = $this->bdd->prepare('SELECT parties_sudoku_left FROM account WHERE email=:email');
+
+	public function getPartyLeftNumberForPartie($partie_name) {
+		$req = $this->bdd->prepare('SELECT ' . $partie_name . ' FROM account WHERE email=:email');
 		$req->execute(array('email' => $this->getUserSession()['email']));
 
 		while ($donnees = $req->fetch()) {
-			return $donnees['parties_sudoku_left'];
+			return $donnees[$partie_name];
 		}
 	}
 
-	public function addOneSudokuPartyPlay() {
+	public function getSudokyPartyLeftNumber() {
+		return $this->getPartyLeftNumberForPartie('parties_sudoku_left');
+	}
+
+	public function getMorpionPartyLeftNumber() {
+		return $this->getPartyLeftNumberForPartie('parties_morpion_pay_left');
+	}
+
+	
+
+	public function addOneSudokuPartyPlayed() {
 		$req = $this->bdd->prepare('UPDATE account SET parties_sudoku_left=:parties_sudoku_left WHERE email=:email');
 		$req->execute(array('parties_sudoku_left' => $this->getSudokyPartyLeftNumber() - 1, 'email' => $this->getUserSession()['email']));
 	}
@@ -164,6 +178,18 @@ class Session {
 	public function addOneSudokuPartyToPlay() {
 		$req = $this->bdd->prepare('UPDATE account SET parties_sudoku_left=:parties_sudoku_left WHERE email=:email');
 		$req->execute(array('parties_sudoku_left' => $this->getSudokyPartyLeftNumber() + 1, 'email' => $this->getUserSession()['email']));
+	}
+
+
+
+	public function addOneMorpionPartyPlayed() {
+		$req = $this->bdd->prepare('UPDATE account SET parties_morpion_pay_left=:parties_morpion_pay_left WHERE email=:email');
+		$req->execute(array('parties_morpion_pay_left' => $this->getMorpionPartyLeftNumber() - 1, 'email' => $this->getUserSession()['email']));
+	}
+
+	public function addOneMorpionPartyToPlay() {
+		$req = $this->bdd->prepare('UPDATE account SET parties_morpion_pay_left=:parties_morpion_pay_left WHERE email=:email');
+		$req->execute(array('parties_morpion_pay_left' => $this->getMorpionPartyLeftNumber() + 1, 'email' => $this->getUserSession()['email']));
 	}
 	// -------------
 
@@ -196,16 +222,13 @@ class Session {
 			return false;
 		}
 
-
-
-
 		if($account_mode == 0) {
-			$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 1, NULL, :ip)");
+			$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 1, NULL, :ip)");
 			$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'ip' => $ip));
 		}
 
 		else if($account_mode == 1 || $account_mode == 2) {
-			$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, admin, parties_free_left, parties_free_timestamp, parties_sudoku_left, last_partie_date, banned, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, 0, 0, 0, NULL, 0, 0, :token, :ip)");
+			$req2 = $this->bdd->prepare("INSERT INTO account(username, password, email, inscription_date, account_validated, token, ip) VALUES (:username, :password, :email, NOW(), 0, :token, :ip)");
 			$req2->execute(array('username' => $username, 'password' => $password, 'email' => $email, 'token' => $this->generateTokenForMail($email, $account_mode), 'ip' => $ip));
 		}
 

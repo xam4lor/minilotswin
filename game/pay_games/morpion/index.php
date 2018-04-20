@@ -12,8 +12,8 @@
 
 
 <?php
-	if($session->isUserSession() && !($session->getSudokyPartyLeftNumber() > 0)) $display_game = false;
-	else if($session->isUserSession() && $session->getSudokuKeyNumber() <= 0) $display_game = false;
+	if($session->isUserSession() && !($session->getMorpionPartyLeftNumber() > 0)) $display_game = false;
+	else if($session->isUserSession() && $session->getMorpionKeyNumber() <= 0) $display_game = false;
 	else $display_game = true;
 
  
@@ -89,7 +89,7 @@
 
 
 	else {
-		$game_key_left = $session->getSudokuKeyNumber();
+		$game_key_left = $session->getMorpionKeyNumber();
 
 		if($game_key_left == 0) {
 			?>
@@ -97,9 +97,9 @@
 			<div id="game">
 			<!-- Container -> A propos du site -->
 				<div class="w3-content w3-container w3-padding-64">
-					<h3 class="w3-center" id="game-title">TICKET DE SUDOKU</h3>
+					<h3 class="w3-center" id="game-title">TICKET DE MORPION PAYANT</h3>
 
-					<p id="game-text">&nbsp;&nbsp;&nbsp;&nbsp;Il n'y a actuellement <b>plus de lots</b> pour le Sudoku restants, revenez dans quelques jours.<br/>Pour suivre l'actualité de notre site, <b>suivez nous</b> sur notre compte <b>Twitter</b> :
+					<p id="game-text">&nbsp;&nbsp;&nbsp;&nbsp;Il n'y a actuellement <b>plus de lots</b> pour le Morpion restants, revenez dans quelques jours.<br/>Pour suivre l'actualité de notre site, <b>suivez nous</b> sur notre compte <b>Twitter</b> :
 						<a href="https://twitter.com/minilotswin" class="twitter-follow-button" data-show-count="false" data-size="large">Suivez-nous</a>
 					</p>
 
@@ -115,17 +115,17 @@
 			<div id="game">
 			<!-- Container -> A propos du site -->
 				<div class="w3-content w3-container w3-padding-64">
-					<h3 class="w3-center" id="game-title">TICKET DE SUDOKU</h3>
+					<h3 class="w3-center" id="game-title">TICKET DE MORPION PAYANT</h3>
 
-					<p id="game-text">Cliquez sur le bouton suivant pour acheter 1 ticket de Sudoku pour <b><?php echo $params->getSudokuTicketPrice(); ?>&euro;</b> et gagner <b>une clé Steam</b> ou <b>un bien matériel</b>.</p>
+					<p id="game-text">Cliquez sur le bouton suivant pour acheter 1 ticket de Morpion payant pour <b><?php echo $params->getMorpionTicketPrice(); ?>&euro;</b> et gagner <b>une clé Steam</b> ou <b>un bien matériel</b>.</p>
 
 					<center>
 						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 							<input type="hidden" name="cmd" value="_s-xclick">
-							<input type="hidden" name="hosted_button_id" value="2P9FKLEBRZKWL">
+							<input type="hidden" name="hosted_button_id" value="JXMJ94F4XTFZ6">
 							<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
 							<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-							<input type="hidden" name="custom" value=<?php echo '"payement_id=1§§user_id=' . $session->getUserSession()['id'] . '"'; ?>>
+							<input type="hidden" name="custom" value=<?php echo '"payement_id=2§§user_id=' . $session->getUserSession()['id'] . '"'; ?>>
 						</form>
 					</center>
 				</div>

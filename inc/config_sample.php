@@ -45,7 +45,8 @@ class Config {
 			'win_percentage' => -1, 		// % de chance de gagner un lot en gagnant une partie gratuite
 			'nb_parties_max' => -1,			// nombre parties / jour gratuites
 			'sudoku_gess_nb' => -1,			// nombre cases à deviner au sudoku
-			'sudoku_ticket_price' => -1		// prix d'un ticket de sudoku (en euros)
+			'sudoku_ticket_price' => -1,	// prix d'un ticket de sudoku (en euros)
+			'morpion_ticket_price' => -1	// prix d'un ticket de morpion (en euros)
 		);
 		// ---------------------------------------
 

@@ -65,7 +65,12 @@
 						else if(substr($_SESSION['has_win'], -1) == '1') {
 							$canGetLot = $lots_gestion->getRandomSudokuLot($bdd, $session);
 
-							if($canGetLot) $session->addOneSudokuPartyPlay();
+							if($canGetLot) $session->addOneSudokuPartyPlayed();
+						}
+						else if(substr($_SESSION['has_win'], -1) == '2') {
+							$canGetLot = $lots_gestion->getRandomMorpionPayLot($bdd, $session);
+
+							if($canGetLot) $session->addOneMorpionPartyPlayed();
 						}
 
 

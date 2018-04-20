@@ -20,7 +20,8 @@
 
 	TYPE DE CLE BDD (key_type) :
 	   -   0  --->  clés gratuites
-	   -   1  --->  clés payantes
+	   -   1  --->  clés de sudoku
+	   -   2  --->  clés de morpion payantes
 	*/
 
 ?>
@@ -206,7 +207,7 @@
 								<p class="w3-center">
 									<em>Vous avez sélectionné une clé comme type de lot.
 									<br />Pour entrer une clé utilisable <b>indéfiniment</b>, entrez la valeur <b>'-1'</b> dans le nombre maximum d'utilisations de cette clé.
-									<br />Pour la valeurs du champ <b>'type de clé'</b> : pour une clé <b>gratuite</b>, entrez <b>0</b>, pour une clé <b>payante</b>, entrez <b>1</b>.</em>
+									<br />Pour la valeurs du champ <b>'type de clé'</b> : pour une clé <b>gratuite</b>, entrez <b>0</b>, pour une clé <b>de Sudoku</b>, entrez <b>1</b>, pour une clé <b>de Morpion payante</b>, entrez <b>2</b>.</em>
 								</p>
 
 								<form method="post" action="#about">
@@ -241,7 +242,7 @@
 								?>
 								<p class="w3-center">
 									<em>Vous avez sélectionné un compte comme type de lot.
-									<br />Pour la valeurs du champ <b>'type de clé'</b> : pour une clé <b>gratuite</b>, entrez <b>0</b>, pour une clé <b>payante</b>, entrez <b>1</b>.</em>
+									<br />Pour la valeurs du champ <b>'type de clé'</b> : pour une clé <b>gratuite</b>, entrez <b>0</b>, pour une clé <b>de Sudoku payante</b>, entrez <b>1</b>, pour une clé <b>de Morpion payante</b>, entrez <b>2</b>.</em>
 								</p>
 
 								<form method="post" action="#about">

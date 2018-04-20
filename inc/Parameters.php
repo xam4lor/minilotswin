@@ -24,6 +24,7 @@ class Parameters {
 		$this->nb_parties_max = $config['nb_parties_max'];
 		$this->sudoku_gess_nb = $config['sudoku_gess_nb'];
 		$this->sudoku_ticket_price = $config['sudoku_ticket_price'];
+		$this->morpion_ticket_price = $config['morpion_ticket_price'];
 	}
 
 
@@ -51,5 +52,9 @@ class Parameters {
 
 	public function getSudokuTicketPrice() {
 		return $this->sudoku_ticket_price;
+	}
+
+	public function getMorpionTicketPrice() {
+		return $this->morpion_ticket_price;
 	}
 }

@@ -72,9 +72,13 @@
 				<!-- Container -> A propos du site -->
 					<div class="w3-content w3-container w3-padding-64" id="about">
 						<h3 class="w3-center">MES LOTS</h3>
-						<p class="answer-text w3-center">Ci-dessous figure la liste des 30 derniers lots que vous avez gagné.<br />Le dernier lot gagné figure en premier sur la liste suivante.</p><br />
+						<p class="answer-text w3-center">
+							Ci-dessous figure la liste des 30 derniers lots que vous avez gagné.
+							<br />Le <b>dernier lot</b> gagné figure en <b>premier</b> sur la liste suivante.
+							<br />Pour récupérer un <b>lot matériel</b>, une fois votre lot reçu, contactez MiniLotsWin via <a class="w3-hover-text-green" href="https://twitter.com/MiniLotsWin">Twitter</a> ou via le formulaire en bas de page.
+						</p>
 
-						<table class="w3-content w3-padding-64 custom-tbl">
+						<br /><table class="w3-content w3-padding-64 custom-tbl">
 							<thead> <!-- En-tête du tableau -->
 								<tr>
 									<th>
@@ -103,31 +107,40 @@
 											if($arrayDatas[$i] == $session->getUserSession()['email'] && $cles_number_display <= 30) { //si mail correspond
 												$cles_number_display++;
 
-												if($donnees['type'] === 'cle') { //CAS CLE
+												if($donnees['type'] === 'cle') { // CAS CLE
 													?>
 														<tr>
-															<td>Clé</td>
+															<td><b>Clé</b></td>
 															<td><?php echo $donnees['plateforme'] ?></td>
 															<td colspan="2"><b>Clé :</b> <?php echo $donnees['cle'] ?></td>
 														</tr>
 													<?php
 												}
-												else if($donnees['type'] === 'account') { //CAS COMPTE
+												else if($donnees['type'] === 'account') { // CAS COMPTE
 													$split_cle = explode('§§', $donnees['cle']);
 													?>
 														<tr>
-															<td>Compte</td>
+															<td><b>Compte</b></td>
 															<td><?php echo $donnees['plateforme'] ?></td>
 															<td><b>Username :</b> <?php echo $split_cle[0] ?></td>
 															<td><b>Password :</b> <?php echo $split_cle[1] ?></td>
 														</tr>
 													<?php
 												}
+												else if($donnees['type'] === 'materiel') { //CAS LOT MATERIEL
+													?>
+														<tr>
+															<td><b>Lot matériel</b></td>
+															<td><b>Marque :</b> <?php echo $donnees['plateforme'] ?></td>
+															<td colspan="2"><b>Description du produit :</b> <?php echo $donnees['cle'] ?></td>
+														</tr>
+													<?php
+												}
 												else {
 													?>
 														<tr>
-															<td>Erreur</td>
-															<td>Erreur</td>
+															<td><b>Erreur</b></td>
+															<td><b>Erreur</b></td>
 															<td colspan="2">Veuillez contacter un administrateur</td>
 														</tr>
 													<?php

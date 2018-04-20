@@ -35,7 +35,7 @@
 		<!-- 1ère image transition -->
 		<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
 			<div class="w3-display-middle" style="white-space:nowrap;">
-				<h1><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MINI-LOTS</span></h1>
+				<h1><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MINI-LOTS</span></h1> 
 			</div>
 		</div>
 
@@ -61,7 +61,7 @@
 				<div class="answer-text">
 					<?php
 
-						//APRES REMPLISSAGE DES INFOS + SELECTION DU TYPE DE CLE --------------------------
+						// APRES REMPLISSAGE DES INFOS + SELECTION DU TYPE DE CLE --------------------------
 						if(isset($_POST['select_conf'])) {
 							$select = htmlspecialchars($_POST['select_conf']);
 							$sucess = false;
@@ -73,7 +73,7 @@
 								&& isset($_POST['useNb'])
 								&& isset($_POST['keyType'])
 
-							) { //LES CLES STEAM, ORIGIN, ... --------------------------
+							) { // LES CLES STEAM, ORIGIN, ... --------------------------
 								$cle_to_insert = htmlspecialchars($_POST['cle']);
 
 
@@ -133,7 +133,7 @@
 								&& isset($_POST['password'])
 								&& isset($_POST['keyType'])
 
-							) { //LES CLES STEAM, ORIGIN, ... -----------------
+							) { // LES COMPTES SPOTIFY, ... -----------------
 								$cle_to_insert = htmlspecialchars($_POST['username']) . '§§' . htmlspecialchars($_POST['password']);
 
 
@@ -177,6 +177,53 @@
 
 
 
+
+							else if(
+								$select == "materiel"
+								&& isset($_POST['marque'])
+								&& isset($_POST['description'])
+								&& isset($_POST['keyType'])
+
+							) { // LES LOTS MATERIELS : TShirts, ... -----------------
+								$req = $bdd->prepare(
+									'INSERT INTO lots_list(
+										type,
+										plateforme,
+										cle,
+										key_add_by,
+										key_add_date,
+										use_left_nb,
+										use_initial_nb,
+										key_type
+									)
+									VALUES (
+										:type,
+										:plateforme,
+										:cle,
+										:key_add_by,
+										NOW(),
+										:use_left_nb,
+										:use_initial_nb,
+										:key_type
+									)'
+								);
+								$req->execute(
+									array(
+										'type' => $select,
+										'plateforme' => htmlspecialchars($_POST['marque']),
+										'cle' => htmlspecialchars($_POST['description']),
+										'key_add_by' => $session->getUserSession()['username'],
+										'use_left_nb' => 1,
+										'use_initial_nb' => 1,
+										'key_type' => htmlspecialchars($_POST['keyType'])
+									)
+								);
+
+								$sucess = true;
+							}
+
+
+
 							else { //DEBUG : ERREUR / TENTATIVE DE PIRATAGE -------------------------------
 								?>
 								<p>Vous n'avez pas rempli tous les champs. Si c'est le cas, il y a une erreur dans le type de lot choisi, veuillez contacter un administrateur ci-dessous.</p>
@@ -188,7 +235,7 @@
 
 							if($sucess) { //MESSAGE CONFIRMATION : TOUT S'EST BIEN PASSE
 								?>
-								<p>Vous avez bien ajouté cette clé.</p>
+								<p>Vous avez bien ajouté ce lot.</p>
 								<?php
 							}
 						}
@@ -238,7 +285,7 @@
 
 
 
-							else if($select == "account") { //LES CLES STEAM, ORIGIN, ... --------------------
+							else if($select == "account") { //LES COMPTES SPOTIFY, ... --------------------
 								?>
 								<p class="w3-center">
 									<em>Vous avez sélectionné un compte comme type de lot.
@@ -272,6 +319,35 @@
 
 
 
+							else if($select == "materiel") { //LES LOTS MATERIELS : TShirts, ... --------------------
+								?>
+								<p class="w3-center">
+									<em>Vous avez sélectionné un lot matériel comme type de lot.
+									<br />Pour la valeurs du champ <b>'type du lot'</b> : pour un lot <b>gratuit</b>, entrez <b>0</b>, pour un lot <b>de Sudoku payant</b>, entrez <b>1</b>, pour un lot <b>de Morpion payant</b>, entrez <b>2</b>.</em>
+								</p>
+
+								<form method="post" action="#about">
+									<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+										<input class="w3-input w3-border" type="text" placeholder="Marque de l'objet" required name="marque" />
+									</div>
+
+									<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+										<input class="w3-input w3-border" type="text" placeholder="Description du produit" required name="description" />
+									</div>
+
+									<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+										<input class="w3-input w3-border" type="text" placeholder="Id du type du lot (cf paragraphe ci-dessus)" required name="keyType" />
+									</div>
+
+									<button class="bords-ronds w3-button w3-black w3-right w3-section" type="submit"><i class="fa fa-paper-plane"></i> AJOUTER LE LOT</button>
+									
+									<input style="display: none;" type="text" name="select_conf" value=<?php echo '"' . $select . '"'; ?> />
+								</form>
+								<?php
+							}
+
+
+
 							else { //DEBUG : ERREUR / TENTATIVE DE PIRATAGE ------------------
 								?>
 								<p>Erreur dans le type de lot choisi, veuillez contacter un administrateur ci-dessous.</p>
@@ -292,6 +368,7 @@
 										<option value="">Type de lots</option>
 										<option value="cle">Clé</option>
 										<option value="account">Compte</option>
+										<option value="materiel">Lot matériel</option>
 									</select>
 								</form>
 							</center>

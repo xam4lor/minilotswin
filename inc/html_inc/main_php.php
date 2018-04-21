@@ -18,3 +18,9 @@
 
 
 	$tools->updateVisiteursConnectes(); //update nombre visiteurs connectés
+
+
+	if($params->isWebsiteInMaintenance()) {
+		header('Location: https://minilotswin.000webhostapp.com/maintenance.html');
+		exit();
+	}

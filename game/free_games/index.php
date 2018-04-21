@@ -41,7 +41,7 @@
 			<h3 class="w3-center" id="game-title">PLUS DE LOTS</h3>
 			
 			<p id="game-text">Il n'y a actuellement <b>plus de lots gratuits disponibles</b>, nous en rajouterons dès que possible.</p>
-			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"> Retour à l'accueil</button>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"> Retour à l'accueil</button>
 		</div>
 	</div>	
 
@@ -56,7 +56,7 @@
 			<h3 class="w3-center" id="game-title">TROP DE PARTIES</h3>
 			
 			<p id="game-text">Vous n'avez le droit qu'à <b><?php echo $parties_max ?> parties gratuites</b> par jour, revenez demain !</p>
-			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"> Retour à l'accueil</button>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"> Retour à l'accueil</button>
 		</div>
 	</div>	
 

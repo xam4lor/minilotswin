@@ -44,25 +44,25 @@
 
 	if($cle_number == 0) {
 		$cle_number = "Aucun";
-		$cle_number_html = "lot n'est actuellement disponible";
+		$cle_number_html = "lot gratuit n'est actuellement disponible";
 	}
 	else if($cle_number <= 1) {
-		$cle_number_html = "lot est actuellement disponible";
+		$cle_number_html = "lot gratuit est actuellement disponible";
 	}
 	else {
-		$cle_number_html = "lots sont actuellement disponibles";
+		$cle_number_html = "lots gratuits sont actuellement disponibles";
 	}
 
 
 	if($lots_already_distrib == 0) {
 		$lots_already_distrib = "Aucun";
-		$lots_already_distrib_html = "lot n'a déjà été distribué";
+		$lots_already_distrib_html = "lot gratuit n'a déjà été distribué";
 	}
 	else if($lots_already_distrib <= 1) {
-		$lots_already_distrib_html = "lot a déjà été distribué";
+		$lots_already_distrib_html = "lot gratuit a déjà été distribué";
 	}
 	else {
-		$lots_already_distrib_html = "lots ont déjà été distribués";
+		$lots_already_distrib_html = "lots gratuits ont déjà été distribués";
 	}
 	//----------------------------------------------------------------------------
 

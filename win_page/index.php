@@ -22,7 +22,7 @@
 				<h3 class="w3-center">CONNEXION REQUISE</h3>
 				<p class="reponse-text">Vous devez être connecté pour récupérer vos lots, pour cela cliquez sur le bouton suivant :</p>
 
-				<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/account/connexion.php'"><i class="fa fa-paper-plane"></i> Connexion</button>
+				<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/account/connexion.php#about'"><i class="fa fa-paper-plane"></i> Connexion</button>
 			</div>
 		</div>
 
@@ -49,7 +49,7 @@
 							</script>
 
 							<p>Vous n'avez pas la permission d'accéder à cette page. Vous allez être redirigé dans quelques secondes sinon cliquez sur le bouton suivant :</p>
-							<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+							<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
 						</div>
 
 						<?php
@@ -81,7 +81,7 @@
 							$message_text = "Votre lot a bien été distribué. Cliquez sur le bouton suivant pour le voir :";
 						}
 						else {
-							$button = "<button class='bords-ronds w3-button w3-black w3-right w3-section' onclick='document.location.href=\"/\"'><i class='fa fa-paper-plane'></i> Revenir à l'accueil</button>";
+							$button = "<button class='bords-ronds w3-button w3-black w3-right w3-section' onclick='document.location.href=\"/#about\"'><i class='fa fa-paper-plane'></i> Revenir à l'accueil</button>";
 							$message_text = "Il n'y a actuellement <b>plus de lots</b>, revenez sur cette page dans quelques jours. Si vous avez acheté une partie payante, <b>votre ticket sera conservé</b> et vous pourrez re-faire une partie lorsqu'il y aura de nouveau des lots. Cliquez sur le bouton suivant pour revenir à l'accueil :";
 						}
 

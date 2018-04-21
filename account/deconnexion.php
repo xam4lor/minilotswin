@@ -10,6 +10,8 @@
 	}
 ?>
 
+
+
 		<!-- 1ère image transition -->
 		<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
 			<div class="w3-display-middle" style="white-space:nowrap;">
@@ -25,6 +27,9 @@
 				<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i>Cliquez ici pour retourner à l'accueil</button>
 			</div>
 		</div>
+
+
+
 
 <?php
 	include_once '../inc/html_inc/contact.php';

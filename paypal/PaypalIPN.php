@@ -1,6 +1,6 @@
 <?php
 
-	class PaypalIPN{
+	class PaypalIPN {
 		private $use_sandbox = false;
 		private $use_local_certs = true;
 

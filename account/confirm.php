@@ -4,12 +4,16 @@
 	$account_valid_mode = $config->getAccountConfig()['account_valid_mode'];
 ?>
 
+
+
 	<!-- 1ère image transition -->
 	<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
 		<div class="w3-display-middle" style="white-space:nowrap;">
 			<h1><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MINI-LOTS</span></h1>
 		</div>
 	</div>
+
+
 
 
 <?php
@@ -30,9 +34,19 @@
 
 
 
-		if($account_valid_mode == 1 || ($account_valid_mode == 2 && isset($_POST['email']) && isset($_POST['code']))) {
-			if(($account_valid_mode == 1 && $session->confirmAccountFromToken($_GET['token'])) || ($account_valid_mode == 2 && $session->confirmAccountFromToken($_POST['code']))) {
-				// success
+
+
+		if(
+			$account_valid_mode == 1
+			|| ($account_valid_mode == 2 && isset($_POST['email']) && isset($_POST['code']))
+		)
+		{
+			if(
+				($account_valid_mode == 1 && $session->confirmAccountFromToken($_GET['token']))
+				|| ($account_valid_mode == 2 && $session->confirmAccountFromToken($_POST['code']))
+			)
+			{
+				// Compte confirmé
 				?>
 					<div id="about">
 						<div class="w3-content w3-container w3-padding-64">
@@ -44,8 +58,10 @@
 					</div>
 				<?php
 			}
+
+
 			else if($account_valid_mode == 1) {
-				// token not valid
+				// Token invalide
 				?>
 					<div id="about">
 						<div class="w3-content w3-container w3-padding-64">
@@ -57,8 +73,10 @@
 					</div>
 				<?php
 			}
+
+
 			else if($account_valid_mode == 2) {
-				// token not valid
+				// Token invalide
 				?>
 					<div id="about">
 						<div class="w3-content w3-container w3-padding-64" id="about-2">
@@ -71,7 +89,10 @@
 				<?php
 			}
 		}
+
+
 		else if($account_valid_mode == 2) {
+			// Formulaire permettant de rentrer le token
 			?>
 				<div id="about">
 					<div class="w3-content w3-container w3-padding-64">

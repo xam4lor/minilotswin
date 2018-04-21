@@ -23,7 +23,9 @@
 ?>
 
 
-		<!-- _________________________ LISTE DES LOTS _________________________ -->
+
+
+		<!-- LISTE DES LOTS -->
 
 		<!-- 1ère image transition -->
 		<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
@@ -168,10 +170,8 @@
 			}
 		?>
 
-		<!-- __________________________________________________________________ -->
 
-
-		<!-- _______________________ MODIFIER LE COMPTE _______________________ -->
+		<!-- MODIFIER LE COMPTE -->
 
 		<!-- 2e image transition -->
 		<div class="bgimg-2 w3-display-container w3-opacity-min">
@@ -234,7 +234,8 @@
 			</div>
 		</div>
 
-		<!-- __________________________________________________________________ -->
+
+
 
 
 

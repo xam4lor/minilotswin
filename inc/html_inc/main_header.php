@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<meta name="description" content="Gagnez des lots gratuitement en jouant à des mini-jeux !" />
-		<meta name="keywords" content="jeux lots big-lots gratuit cadeau gagner mini-jeu free gift game fun" />
+		<meta name="keywords" content="jeux lots gratuit cadeau gagner mini-jeu free gift game fun pay win" />
 		<meta name="Resource-type" content="Document">
 
 		<link rel="icon" type="image/png" href="/imgs/favicon.ico" />

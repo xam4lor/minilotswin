@@ -13,6 +13,7 @@ class Parameters {
 
 
 
+	private $maintenance;			// true : le site est en maintenance (redirection automatique vers maintenance.html)
 	private $win_percentage;		// pourcentage de chance de gagner un lot
 	private $nb_parties_max;		// nombre maximum de parties par jour
 	private $sudoku_gess_nb;		// nombre de cases du Sudoku a trouver par partie
@@ -22,6 +23,7 @@ class Parameters {
 
 
 	public function __construct($config) {
+		$this->maintenance = $config['maintenance'];
 		$this->win_percentage = $config['win_percentage'];
 		$this->nb_parties_max = $config['nb_parties_max'];
 		$this->sudoku_gess_nb = $config['sudoku_gess_nb'];
@@ -40,6 +42,10 @@ class Parameters {
 		}
 
 		return false;
+	}
+
+	public function isWebsiteInMaintenance() {
+		return $maintenance;
 	}
 
 	public function getNbPartiesMax() {

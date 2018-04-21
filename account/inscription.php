@@ -4,13 +4,13 @@
 
 	if($session->isUserSession()) {
 		?>
-		<meta http-equiv="Refresh" content="0; URL=/account/">
+		<meta http-equiv="Refresh" content="0; URL=/account/#about">
 
 		<div class="w3-content w3-container w3-padding-64">
 			<h3 class="w3-center" id="game-title">REDIRECTION</h3>
 			
 			<p id="game-text">Vous ne pouvez pas accéder à cette page.</p>
-			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
 		</div>
 		<?php
 		exit();
@@ -19,12 +19,18 @@
 	$dispForm = true;
 ?>
 
+
+
+
 		<!-- 1ère image transition -->
 		<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
 			<div class="w3-display-middle" style="white-space:nowrap;">
 				<h1><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MINI-LOTS</span></h1>
 			</div>
 		</div>
+
+
+
 
 
 	<?php
@@ -73,7 +79,7 @@
 								<h3 class="w3-center">MAIL DE CONFIRMATION</h3>
 								<p>Vous vous êtes bien inscrit. Veuillez maintenant confirmer votre compte en cliquant sur le lien contenu dans le mail envoyé à l'adresse '<?php echo $_POST['email'] ?>'.</p>
 
-								<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i>Cliquez ici pour retourner à l'accueil</button>
+								<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i>Retourner à l'accueil</button>
 							</div>
 						</div>
 					<?php
@@ -85,14 +91,14 @@
 								<h3 class="w3-center">MAIL DE CONFIRMATION</h3>
 
 								<p>Si vous n'êtes pas redirigé dans quelques secondes, veuillez cliquer sur le bouton suivant :
-									<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='confirm.php'"><i class="fa fa-paper-plane"></i> Cliquez ici</button>
+									<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='confirm.php#about'"><i class="fa fa-paper-plane"></i> Cliquez ici</button>
 								</p>
 
 								<script type="text/javascript">
 									window.location.replace("confirm.php");
 								</script>
 
-								<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i>Cliquez ici pour retourner à l'accueil</button>
+								<br /><br /><button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i>Retourner à l'accueil</button>
 							</div>
 						</div>
 					<?php

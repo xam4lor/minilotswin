@@ -10,12 +10,15 @@
 			<h3 class="w3-center" id="game-title">REDIRECTION</h3>
 			
 			<p id="game-text">Vous ne pouvez pas accéder à cette page.</p>
-			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
 		</div>
 		<?php
 		exit();
 	}
 ?>
+
+
+
 
 		<!-- 1ère image transition -->
 		<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
@@ -23,6 +26,10 @@
 				<h1><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MINI-LOTS</span></h1>
 			</div>
 		</div>
+
+
+
+
 
 	<?php
 		$show_error = true;
@@ -34,10 +41,14 @@
 			if($isConnected == -1) {
 				$error_message = "<p class='error-message'>Vous avez été banni du site conformément à nos <a href=\"/account/cgu.php#about\" class=\"w3-hover-text-green\">Conditions Générales d'Utilisation</a>.</p>";
 			}
+
+			
 			else if($isConnected == -2) {
 				$error_message = "<p class='error-message'>Votre compte n'a pas encore été validé, veuillez cliquer sur le lien présent dans le mail de confirmation que nous vous avons envoyé.
 					<br />Si vous ne voyez pas ce mail, veuillez attendre quelques minutes et, si le mail ne s'affiche toujours pas, contacter un administrateur à l'adresse en bas de page.</p>";
 			}
+
+
 			else if($isConnected) {
 				$show_error = false;
 		?>
@@ -63,10 +74,11 @@
 		}
 		
 
+
+
 		if($show_error) {
 	?>
 		<div>
-		<!-- Container -> A propos du site -->
 			<div class="w3-content w3-container w3-padding-64" id="about">
 				<h3 class="w3-center">CONNEXION A L'INTERFACE</h3>
 				<?php echo $error_message ?>
@@ -91,6 +103,10 @@
 	<?php
 		}
 	?>
+
+
+
+
 
 <?php
 	include_once '../inc/html_inc/contact.php';

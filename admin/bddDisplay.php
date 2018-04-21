@@ -4,13 +4,13 @@
 
 	if(!$session->isUserSession() || $session->getUserSession()['admin'] != 1) {
 		?>
-		<meta http-equiv="Refresh" content="0; URL=/">
+		<meta http-equiv="Refresh" content="0; URL=/#about">
 
 		<div class="w3-content w3-container w3-padding-64">
 			<h3 class="w3-center" id="game-title">REDIRECTION</h3>
 			
 			<p id="game-text">Vous ne pouvez pas accéder à cette page.</p>
-			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+			<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
 		</div>
 		<?php
 		exit();
@@ -49,7 +49,7 @@
 						}
 
 
-						//REQUETE SQL CUSTOM PREPARE
+						// REQUETE SQL CUSTOM PREPARE
 						$first = true;
 						$reqSQL = 'INSERT INTO ' . htmlspecialchars($_POST['bdd_name']) . ' (';
 
@@ -82,7 +82,7 @@
 						$reqSQL .= ')';
 						$req2 = $bdd->prepare($reqSQL);
 
-						//REQUETE SQL CUSTOM EXECUTE
+						// REQUETE SQL CUSTOM EXECUTE
 						$arrayExe = array();
 						foreach ($bddDatas as $key => $value) {
 							if($key != "id") {
@@ -90,7 +90,7 @@
 							}
 						}
 						$req2->execute($arrayExe);
-						?>
+					?>
 
 					<h3 class="w3-center" id="game-title">CONFIRMATION DE L'AJOUT</h3>
 					<p id="answer-text">La ligne a bien été ajoutée à la base de donnée <?php echo htmlspecialchars($_GET['bdd_name']) ?>.</p><br />
@@ -460,7 +460,7 @@
 					</select>
 
 					<br />
-					<button class="margin-button bords-ronds w3-button w3-black w3-section" onclick="document.location.href='/admin/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil administrateur</button>
+					<button class="margin-button bords-ronds w3-button w3-black w3-section" onclick="document.location.href='/admin/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil administrateur</button>
 
 					<?php
 				}

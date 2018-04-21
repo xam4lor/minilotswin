@@ -1,11 +1,11 @@
 		
 		<span itemscope itemtype="http://schema.org/WebSite">
 			<title itemprop='name'>MiniLotsWin</title>
-			<link rel="canonical" href="http://www.minilotswin.890m.com/" itemprop="url">
+			<link rel="canonical" href="https://minilotswin.000webhostapp.com/" itemprop="url">
 		</span>
 
 		<span itemscope itemtype="http://schema.org/Organization" style="display: none;">
-			<link itemprop="url" href="http://www.minilotswin.890m.com">
+			<link itemprop="url" href="https://minilotswin.000webhostapp.com/">
 			<a itemprop="sameAs" href="https://twitter.com/MiniLotsWin">Twitter</a>
 			<span itemprop="contactPoint">
 				<a itemprop="email" href="mailto:minilotswin@gmail.com">Email</a>

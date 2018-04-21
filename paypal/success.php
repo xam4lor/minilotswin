@@ -39,7 +39,7 @@
 							<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nous vous invitons également à <b>partager notre site</b> sur les réseaux sociaux ainsi qu'à en <b>parler autour de vous</b>, dans le but de toucher plus de public et pouvoir donc fournir de meilleurs lots.
 						</p>
 
-						<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+						<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
 					</div>
 				</div>
 			</div>

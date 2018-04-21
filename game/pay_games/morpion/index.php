@@ -103,7 +103,7 @@
 						<a href="https://twitter.com/minilotswin" class="twitter-follow-button" data-show-count="false" data-size="large">Suivez-nous</a>
 					</p>
 
-					<button class="margin-button bords-ronds w3-button w3-black w3-section" onclick="document.location.href='/'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
+					<button class="margin-button bords-ronds w3-button w3-black w3-section" onclick="document.location.href='/#about'"><i class="fa fa-paper-plane"></i> Retour à l'accueil</button>
 				</div>
 			</div>
 

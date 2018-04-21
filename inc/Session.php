@@ -250,7 +250,7 @@ class Session {
 					</head>
 
 					<body>
-						<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="https://minilotswin.000webhostapp.com/account/confirm.php?token=' . $token . '#about">cliquez</a></p>
+						<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="https://minilotswin.000webhostapp.com/account/confirm.php?token=' . $token . '#about">cliquez ici</a></p>
 					</body>
 				</html>
 			';

@@ -42,6 +42,7 @@ class Config {
 
 		// ---------- PARAMETERS CONFIG ----------
 		$this->parameters = array(
+			'maintenance' => false,			// true : le site est en maintenance (redirection automatique vers maintenance.html)
 			'win_percentage' => -1, 		// % de chance de gagner un lot en gagnant une partie gratuite
 			'nb_parties_max' => -1,			// nombre parties / jour gratuites
 			'sudoku_gess_nb' => -1,			// nombre cases à deviner au sudoku

@@ -18,8 +18,8 @@
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="/css/w3.css" />
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="/res/jquery.min.js"></script>
+		<script src="/res/jquery-ui.min.js"></script>
 
 
 		<script>

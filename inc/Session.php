@@ -241,6 +241,7 @@ class Session {
 
 		$subject = 'Validation de votre compte sur MiniLotsWin';
 		$message = '';
+		$main_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/";
 
 		if($account_mode == 1) {
 			$message = '
@@ -250,7 +251,7 @@ class Session {
 					</head>
 
 					<body>
-						<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="https://minilotswin.000webhostapp.com/account/confirm.php?token=' . $token . '#about">cliquez ici</a></p>
+						<p>Cliquez sur le lien suivant pour valider votre compte MiniLotsWin : <a href="' . $main_url . 'account/confirm.php?token=' . $token . '#about">cliquez ici</a></p>
 					</body>
 				</html>
 			';
@@ -263,7 +264,7 @@ class Session {
 					</head>
 
 					<body>
-						<p>Entrez ce code de validation sur le site pour valider votre compte : "' . $token . '" à la page sur laquelle vous avez été redirigé (si vous n\'avez pas été redrigé, veuillez <a href="https://minilotswin.000webhostapp.com/account/confirm.php#about">cliquer ici</a>.</p>
+						<p>Entrez ce code de validation sur le site pour valider votre compte : "' . $token . '" à la page sur laquelle vous avez été redirigé (si vous n\'avez pas été redrigé, veuillez <a href="' . $main_url . 'account/confirm.php#about">cliquer ici</a>.</p>
 					</body>
 				</html>
 			';

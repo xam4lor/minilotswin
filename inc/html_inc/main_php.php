@@ -19,8 +19,24 @@
 
 	$tools->updateVisiteursConnectes(); //update nombre visiteurs connectés
 
+	// variables globales :
+	$main_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/";
+	$maintenance = $params->isWebsiteInMaintenance();
 
-	if($params->isWebsiteInMaintenance()) {
-		header('Location: https://minilotswin.000webhostapp.com/maintenance.html');
+	// maintenance
+	if(
+		(
+			strcmp($main_url . '/maintenance.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
+			&& $maintenance
+			&& !$session->isUserSession()
+		)
+		|| (
+			strcmp($main_url . '/maintenance.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
+			&& $maintenance
+			&& $session->isUserSession()
+			&& $session->getUserSession()['admin'] != 1
+		)
+	) {
+		header('Location: ' . $main_url . 'maintenance.php');
 		exit();
 	}

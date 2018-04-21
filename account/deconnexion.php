@@ -1,6 +1,5 @@
 <?php
-	include_once '../inc/html_inc/header/accueil_contact.php';
-	
+	include_once '../inc/html_inc/main_php.php';
 
 	$message_rep = "Vous n'êtes pas connecté.";
 
@@ -8,6 +7,8 @@
 		$session->destroySession();
 		$message_rep = "Vous vous êtes bien déconnecté.";
 	}
+
+	include_once '../inc/html_inc/header/accueil_contact.php';
 ?>
 
 

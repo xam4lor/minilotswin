@@ -45,7 +45,7 @@ class Parameters {
 	}
 
 	public function isWebsiteInMaintenance() {
-		return $maintenance;
+		return $this->maintenance;
 	}
 
 	public function getNbPartiesMax() {

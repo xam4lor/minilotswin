@@ -46,7 +46,8 @@ class Config {
 			'nb_parties_max' => -1,			// nombre parties / jour gratuites
 			'sudoku_gess_nb' => -1,			// nombre cases à deviner au sudoku
 			'sudoku_ticket_price' => -1,	// prix d'un ticket de sudoku (en euros)
-			'morpion_ticket_price' => -1	// prix d'un ticket de morpion (en euros)
+			'morpion_ticket_price' => -1,	// prix d'un ticket de morpion (en euros)
+			'paypal_use_sandbox' => false 	// true : paypal utilise l'API sandbox / false : paypal utilise l'API classique
 		);
 		// ---------------------------------------
 

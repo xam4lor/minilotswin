@@ -85,7 +85,7 @@
 										<h4><b>Type</b></h4>
 									</th>
 									<th>
-										<h4><b>Plateforme</b></h4>
+										<h4><b>Plateforme / Marque</b></h4>
 									</th>
 									<th colspan="2">
 										<h4><b>Clé / Compte</b></h4>
@@ -104,34 +104,41 @@
 										$arrayDatas = explode('§§', $donnees['mail_user']);
 
 										for ($i = 0; $i < sizeof($arrayDatas); $i++) {
-											if($arrayDatas[$i] == $session->getUserSession()['email'] && $cles_number_display <= 30) { //si mail correspond
+											if(
+												strcmp(
+													str_replace(' ', '', $session->getUserSession()['email']),
+													str_replace(' ', '', $arrayDatas[$i])
+												) === 0
+												&& $cles_number_display <= 30
+											)
+											{ //si mail correspond
 												$cles_number_display++;
 
-												if($donnees['type'] === 'cle') { // CAS CLE
+												if(strcmp($donnees['type'], 'cle') === 0) { // CAS CLE
 													?>
 														<tr>
 															<td><b>Clé</b></td>
-															<td><?php echo $donnees['plateforme'] ?></td>
+															<td><b>Plateforme : </b><?php echo $donnees['plateforme'] ?></td>
 															<td colspan="2"><b>Clé :</b> <?php echo $donnees['cle'] ?></td>
 														</tr>
 													<?php
 												}
-												else if($donnees['type'] === 'account') { // CAS COMPTE
+												else if(strcmp($donnees['type'], 'account') === 0) { // CAS COMPTE
 													$split_cle = explode('§§', $donnees['cle']);
 													?>
 														<tr>
 															<td><b>Compte</b></td>
-															<td><?php echo $donnees['plateforme'] ?></td>
-															<td><b>Username :</b> <?php echo $split_cle[0] ?></td>
-															<td><b>Password :</b> <?php echo $split_cle[1] ?></td>
+															<td><b>Plateforme : </b> <?php echo $donnees['plateforme'] ?></td>
+															<td><b>Nom d'utilisateur :</b> <?php echo $split_cle[0] ?></td>
+															<td><b>Mot de passe :</b> <?php echo $split_cle[1] ?></td>
 														</tr>
 													<?php
 												}
-												else if($donnees['type'] === 'materiel') { //CAS LOT MATERIEL
+												else if(strcmp($donnees['type'], 'materiel') === 0) { //CAS LOT MATERIEL
 													?>
 														<tr>
 															<td><b>Lot matériel</b></td>
-															<td><b>Marque :</b> <?php echo $donnees['plateforme'] ?></td>
+															<td><b>Marque : </b> <?php echo $donnees['plateforme'] ?></td>
 															<td colspan="2"><b>Description du produit :</b> <?php echo $donnees['cle'] ?></td>
 														</tr>
 													<?php

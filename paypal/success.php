@@ -25,7 +25,6 @@
 						<p>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Merci beaucoup</b> d'avoir acheté un ou des tickets de jeu ! Cet argent nous permettra tout d'abord de <b>rembourser les lots</b>, d'améliorer notre site WEB ainsi que de fournir de <b>meilleurs lots</b> !
 							<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nous vous invitons également à <b>partager notre site</b> sur les réseaux sociaux et d'en <b>parler autour de vous</b>, dans le but de toucher plus de public et pouvoir donc fournir de meilleurs lots.
-							<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Votre lot devrait être ajouté dans les 24h. Si ce n'est pas le cas, veuillez contacter un administrateur.
 							<br />Veuillez maintenant <b>retourner à l'onglet de jeu</b> afin de <b>gagner vos prix</b>.
 						</p>
 

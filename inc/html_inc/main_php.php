@@ -10,6 +10,7 @@
 	// ----- INITIATION DES VARIABLES DES FONCTIONS -----
 	$config = Config::getInstance();
 	$bdd = App::getDatabase($config->getAppConfig());
+	$config->setupParameters($bdd);
 	$encryption_key = EncryptionKey::getInstance($config->getEncryptionKeyConfig());
 	$params = Parameters::getInstance($config->getParametersConfig());
 	$session = Session::getInstance($bdd, $params);

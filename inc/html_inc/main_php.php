@@ -28,11 +28,15 @@
 	if(
 		(
 			strcmp($main_url . '/maintenance.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
+			&& strcmp($main_url . '/console_datas/get_datas.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
+			&& strcmp($main_url . '/console_datas/post_datas.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
 			&& $maintenance
 			&& !$session->isUserSession()
 		)
 		|| (
 			strcmp($main_url . '/maintenance.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
+			&& strcmp($main_url . '/console_datas/get_datas.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
+			&& strcmp($main_url . '/console_datas/post_datas.php', $main_url . "$_SERVER[REQUEST_URI]") != 0
 			&& $maintenance
 			&& $session->isUserSession()
 			&& $session->getUserSession()['admin'] != 1

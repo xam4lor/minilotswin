@@ -61,8 +61,14 @@
 	$payment_status = strip_tags($_POST['payment_status']); // status du paiement -> Completed si complété
 
 	// --- variable custom ---
-	$custom_var_raw = strip_tags($_POST['custom']);
-	$custom_var = explode(":::", $custom_var_raw);
+	if(isset($_POST['custom'])) {
+		$custom_var_raw = strip_tags($_POST['custom']);
+		$custom_var = explode("___", $custom_var_raw);
+	}
+	else {
+		$custom_var_raw = "";
+	}
+	
 
 
 
@@ -78,72 +84,144 @@
 
 
 
-
-
-
 	// AJOUT EVENTUEL D'UN TICKET
-	// $custom_var = payement_id=_ID_:::user_id=_ID_
-	$payement_id = explode("=", $custom_var[0]);
-	$user_id = explode("=", $custom_var[1]);
+	// $custom_var_raw = payement_id=[_ID_]___user_id=[_ID_]
 	$lot_added = 0;
 
-	// ---- ticket de sudoku ----
 	if(
-		strcmp($payement_id[0], "payement_id") == 0
-		&& strcmp($payement_id[1], "1") == 0
-		&& strcmp($user_id[0], "user_id") == 0
-		&& floatval($paiement_gross) == $params->getSudokuTicketPrice()
+		isset($custom_var[0])
+		&& isset($custom_var[1])
 	)
 	{
-		$req = $bdd->prepare("SELECT parties_sudoku_left FROM account WHERE id=:id");
-		$req->execute(array('id' => $user_id[1]));
-		$parties_sudoku_left = 0;
+		$payement_id = explode(":", $custom_var[0]);
+		$user_id = explode(":", $custom_var[1]);
+		
+		if(
+			isset($payement_id[0])
+			&& isset($payement_id[1])
+			&& isset($user_id[0])
+			&& isset($user_id[1])
+		)
+		{
+			// ---- ticket de sudoku ----
+			if(
+				strcmp($payement_id[0], "payement_id") == 0
+				&& strcmp($payement_id[1], "1") == 0
+				&& strcmp($user_id[0], "user_id") == 0
+				&& floatval($paiement_gross) == $params->getSudokuTicketPrice()
+			)
+			{
+				$req = $bdd->prepare("SELECT parties_sudoku_left FROM account WHERE id=:id");
+				$req->execute(array('id' => $user_id[1]));
+				$parties_sudoku_left = 0;
 
-		while ($donnees = $req->fetch()) {
-			$parties_sudoku_left = intval($donnees['parties_sudoku_left']);
+				while ($donnees = $req->fetch()) {
+					$parties_sudoku_left = intval($donnees['parties_sudoku_left']);
+
+					$lot_added = 1;
+				}
+
+				$req2 = $bdd->prepare("UPDATE account SET parties_sudoku_left=:s_left WHERE id=:id");
+				$req2->execute(array('s_left' => ($parties_sudoku_left + 1), 'id' =>$user_id[1]));
+			}
+
+
+			// ---- ticket de morpion payant ----
+			else if(
+				strcmp($payement_id[0], "payement_id") == 0
+				&& strcmp($payement_id[1], "2") == 0
+				&& strcmp($user_id[0], "user_id") == 0
+				&& floatval($paiement_gross) == $params->getMorpionTicketPrice()
+			)
+			{
+				echo "TEST";
+				$req = $bdd->prepare("SELECT parties_morpion_pay_left FROM account WHERE id=:id");
+				$req->execute(array('id' => $user_id[1]));
+				$parties_morpion_pay_left = 0;
+
+				while ($donnees = $req->fetch()) {
+					$parties_morpion_pay_left = intval($donnees['parties_morpion_pay_left']);
+
+					$lot_added = 1;
+				}
+
+				$req2 = $bdd->prepare("UPDATE account SET parties_morpion_pay_left=:s_left WHERE id=:id");
+				$req2->execute(array('s_left' => ($parties_morpion_pay_left + 1), 'id' =>$user_id[1]));
+			}
+
+			?>
+				<p>La vérification de l'achat d'un ticket et l'ajout de ce ticket si nécessaire a bien été effectué.</p> 
+			<?php
 		}
-
-		$req2 = $bdd->prepare("UPDATE account SET parties_sudoku_left=:s_left WHERE id=:id");
-		$req2->execute(array('s_left' => ($parties_sudoku_left + 1), 'id' =>$user_id[1]));
-
-		$lot_added = 1;
+		else {
+			?>
+				<p>La vérification de l'achat d'un ticket a bien été effectué.</p> 
+			<?php
+		}
+	}
+	else {
+		?>
+			<p>La vérification de l'achat d'un ticket a bien été effectué.</p> 
+		<?php
 	}
 
-
-	// ---- ticket de morpion payant ----
-	else if(
-		strcmp($payement_id[0], "payement_id") == 0
-		&& strcmp($payement_id[1], "2") == 0
-		&& strcmp($user_id[0], "user_id") == 0
-		&& floatval($paiement_gross) == $params->getMorpionTicketPrice()
-	)
-	{
-		$req = $bdd->prepare("SELECT parties_morpion_pay_left FROM account WHERE id=:id");
-		$req->execute(array('id' => $user_id[1]));
-		$parties_morpion_pay_left = 0;
-
-		while ($donnees = $req->fetch()) {
-			$parties_morpion_pay_left = intval($donnees['parties_morpion_pay_left']);
-		}
-
-		$req2 = $bdd->prepare("UPDATE account SET parties_morpion_pay_left=:s_left WHERE id=:id");
-		$req2->execute(array('s_left' => ($parties_morpion_pay_left + 1), 'id' =>$user_id[1]));
-
-		$lot_added = 1;
-	}
+	
 
 
-	?>
-		<p>La vérification de l'achat d'un ticket et l'ajout de ce ticket si nécessaire a bien été effectué.</p> 
-	<?php
+	
 
 
 
 
 
 	// INSCRIPTION DANS LA BDD
-	$req3 = $bdd->prepare("INSERT INTO payments(receveur_infos, txn_id, txn_type, paiement_gross, paiement_currency, paiement_fee, paiement_quantity, paiement_date, payer_id, payer_email, payer_names, custom, lot_added) VALUES (:receveur_infos, :txn_id, :txn_type, :paiement_gross, :paiement_currency, :paiement_fee, :paiement_quantity, :paiement_date, :payer_id, :payer_email, :payer_names, :custom, :lot_added)");
-	$req3->execute(array('receveur_infos' => $receveur_infos, 'txn_id' => $txn_id, 'txn_type' => $txn_type, 'paiement_gross' => $paiement_gross, 'paiement_currency' => $paiement_currency, 'paiement_fee' => $paiement_fee, 'paiement_quantity' => $paiement_quantity, 'paiement_date' => $paiement_date, 'payer_id' => $payer_id, 'payer_email' => $payer_email, 'payer_names' => $payer_names, 'custom' => $custom_var_raw, 'lot_added' => $lot_added));
+	$req3 = $bdd->prepare("
+		INSERT INTO payments(
+			receveur_infos,
+			txn_id,
+			txn_type,
+			paiement_gross,
+			paiement_currency,
+			paiement_fee,
+			paiement_quantity,
+			paiement_date,
+			payer_id,
+			payer_email,
+			payer_names,
+			custom,
+			lot_added
+		) VALUES (
+			:receveur_infos,
+			:txn_id,
+			:txn_type,
+			:paiement_gross,
+			:paiement_currency,
+			:paiement_fee,
+			:paiement_quantity,
+			:paiement_date,
+			:payer_id,
+			:payer_email,
+			:payer_names,
+			:custom,
+			:lot_added
+		)"
+	);
+	
+	$req3->execute(array(
+		'receveur_infos' => $receveur_infos,
+		'txn_id' => $txn_id,
+		'txn_type' => $txn_type,
+		'paiement_gross' => $paiement_gross,
+		'paiement_currency' => $paiement_currency,
+		'paiement_fee' => $paiement_fee,
+		'paiement_quantity' => $paiement_quantity,
+		'paiement_date' => $paiement_date,
+		'payer_id' => $payer_id,
+		'payer_email' => $payer_email,
+		'payer_names' => $payer_names,
+		'custom' => htmlspecialchars($custom_var_raw),
+		'lot_added' => $lot_added
+	));
 	
 	?>
 		<p>La transaction a bien été inscrite dans la base de données.</p> 

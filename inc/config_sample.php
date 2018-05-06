@@ -25,14 +25,16 @@ class Config {
 			$this->app = array(
 				'host' => 'mysql:host=_local-host_;dbname=_local-dbname_;charset=utf8', 		// host de connexion à la BDD et nom de la BDD
 				'user' => '_local-user_', 														// nom d'utilisateur
-				'password' => '_local-password_' 												// mot de passe
+				'password' => '_local-password_', 												// mot de passe
+				'authorization_key' => '_authorization_key_'									// clé d'authorization de l'application administratrice
 			);
 		}
 		else {																					// --- serveur ---
 			$this->app = array(
 				'host' => 'mysql:host=_server-host_;dbname=_server-dbname_;charset=utf8', 		// host de connexion à la BDD et nom de la BDD
 				'user' => '_server-user_', 														// nom d'utilisateur
-				'password' => '_server-password_' 												// mot de passe
+				'password' => '_server-password_', 												// mot de passe
+				'authorization_key' => '_authorization_key_'									// clé d'authorization de l'application administratrice
 			);
 		}
 		// --------------------------------

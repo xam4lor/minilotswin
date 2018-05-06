@@ -1,7 +1,7 @@
 <?php
 	include_once '../inc/html_inc/main_php.php';
 
-	if(!isset($_POST['password']) || !isset($_POST['username']) || !isset($_POST['datas'])) {
+	if(!isset($_POST['password']) || !isset($_POST['username']) || !isset($_POST['token'])) {
 		?>
 			Vous n'êtes pas autorisé à voir cette page.
 		<?php
@@ -22,17 +22,9 @@
 		exit();
 	}
 
-
-	$mysql_array = array();
-	$line_tbl = explode("$$$$", $_POST['datas']);
-
-	foreach ($line_tbl as $line_key => $line_val) {
-		$line_compo = explode(";;;;", $line_val);
-		$mysql_array[$line_compo[0]] = $line_compo[1];
-	}
-
-	$req = $bdd->prepare('UPDATE config SET parameters=:parameters, popup=:popup, account=:account, enkey=:enkey');
-	$req->execute($mysql_array);
+	
+	$req = $bdd->prepare('INSERT INTO admin_app_key(token) VALUES (:token) ON DUPLICATE KEY UPDATE token=:token');
+	$req->execute(array('token' => $_POST['token']));
 
 
 	?>

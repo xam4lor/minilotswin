@@ -1,7 +1,14 @@
 <?php
 	include_once 'inc/html_inc/header/accueil_apropos_jouer_contact.php';
 
-	$win_proba = $params->getWinPercentage();
+	$fields = array(
+		'data' => array(
+			'title' => 'TITRE de test2', 
+			'body' => 'Ceci est une petite notification2',
+			'long_body' => 'Ceci2 est un vrai test parcequ\'au final les vrais texts eh ben c\'est plutot bien et ceci est un vrai test parcequ\'au final les vrais texts eh ben c\'est plutot bien et ceci est un vrai test parcequ\'au final les vrais texts eh ben c\'est plutot bien'
+		)
+	);
+	$admin_app_notif->sendNotification($fields);
 
 
 	//---------------- NOMBRE LOTS DISTRIBUES + NON DISTRIBUES ----------------
@@ -113,6 +120,7 @@
 	}
 	//-------------------------------------------------------------------------
 
+	$win_proba = $params->getWinPercentage(); // win proba
 ?>
 
 		<!-- 1ère image transition -->

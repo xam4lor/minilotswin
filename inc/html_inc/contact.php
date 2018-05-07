@@ -35,10 +35,14 @@
 							if($session->isUserSession()) {
 								$req = $bdd->prepare("INSERT INTO requetes_contact(pseudo, email, message, date_post) VALUES (:pseudo, :email, :message, NOW())");
 								$req->execute(array('pseudo' => $session->getUserSession()['username'], 'email' => $session->getUserSession()['email'], 'message' => htmlspecialchars($_POST['text'])));
+
+								$admin_app_notif->buildAndSendNotification("Nouvelle requête de contact", "Une nouvelle requête de contact ...", "Une nouvelle requête de contact à été envoyé par l'utilisateur inscrit sous le pseudo '" . $session->getUserSession()['username'] . "' : '" . htmlspecialchars($_POST['text']) . "'.");
 							}
 							else {
 								$req = $bdd->prepare("INSERT INTO requetes_contact(pseudo, email, message, date_post) VALUES (:pseudo, :email, :message, NOW())");
 								$req->execute(array('pseudo' => ("Non connecté : " . htmlspecialchars($_POST['pseudo'])), 'email' => htmlspecialchars($_POST['email']), 'message' => htmlspecialchars($_POST['text'])));
+
+								$admin_app_notif->buildAndSendNotification("Nouvelle requête de contact", "Une nouvelle requête de contact ...", "Une nouvelle requête de contact à été envoyé par l'utilisateur non-inscrit au site sous le pseudo '" . htmlspecialchars($_POST['email']) . "' : '" . htmlspecialchars($_POST['text']) . "'.");
 							}
 
 							// CONFIRMATION : email bien envoyé

@@ -22,7 +22,6 @@
 		exit();
 	}
 
-
 	$mysql_array = array();
 	$line_tbl = explode("$$$$", $_POST['datas']);
 
@@ -34,6 +33,7 @@
 	$req = $bdd->prepare('UPDATE config SET parameters=:parameters, popup=:popup, account=:account, enkey=:enkey');
 	$req->execute($mysql_array);
 
+	$admin_app_notif->buildAndSendNotification("Modification des paramètres", "Les paramètres de configuration du site ont été mis à jour.");
 
 	?>
 		Les données ont bien été mises à jour.

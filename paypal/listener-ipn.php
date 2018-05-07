@@ -111,6 +111,8 @@
 				&& floatval($paiement_gross) == $params->getSudokuTicketPrice()
 			)
 			{
+				$admin_app_notif->buildAndSendNotification("Nouvel achat", "Un ticket de sudoku à été acheté ...", "Un ticket de sudoku à été acheté par l'utilisateur à l'id " . $user_id[1] . ".");
+
 				$req = $bdd->prepare("SELECT parties_sudoku_left FROM account WHERE id=:id");
 				$req->execute(array('id' => $user_id[1]));
 				$parties_sudoku_left = 0;
@@ -134,7 +136,8 @@
 				&& floatval($paiement_gross) == $params->getMorpionTicketPrice()
 			)
 			{
-				echo "TEST";
+				$admin_app_notif->buildAndSendNotification("Nouvel achat", "Un ticket de morpion payant à été acheté ...", "Un ticket de morpion payant à été acheté par l'utilisateur à l'id " . $user_id[1] . ".");
+
 				$req = $bdd->prepare("SELECT parties_morpion_pay_left FROM account WHERE id=:id");
 				$req->execute(array('id' => $user_id[1]));
 				$parties_morpion_pay_left = 0;
@@ -154,12 +157,16 @@
 			<?php
 		}
 		else {
+			$admin_app_notif->buildAndSendNotification("Nouveau don", "Un don de " . $paiement_gross . "&euro; a été effectué ...", "Un don de " . $paiement_gross . "&euro; a été effectué. La taxe paypal s'élevant à " . $paiement_fee . "&euro;, le montant net est de " . ($paiement_gross - $paiement_fee) . "&euro;.");
+
 			?>
 				<p>La vérification de l'achat d'un ticket a bien été effectué.</p> 
 			<?php
 		}
 	}
 	else {
+		$admin_app_notif->buildAndSendNotification("Nouveau don", "Un don de " . $paiement_gross . "&euro; a été effectué ...", "Un don de " . $paiement_gross . "&euro; a été effectué. La taxe paypal s'élevant à " . $paiement_fee . "&euro;, le montant net est de " . ($paiement_gross - $paiement_fee) . "&euro;.");
+		
 		?>
 			<p>La vérification de l'achat d'un ticket a bien été effectué.</p> 
 		<?php

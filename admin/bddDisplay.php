@@ -101,7 +101,9 @@
 					}
 					catch (Exception $e) {
 						$dispSelect = true;
-						$gameTextMsg = "Erreur inconnue :<br />" . $e;
+						$gameTextMsg = "Erreur inconnue (un administrateur a été informé) :<br />" . $e;
+
+						$admin_app_notif->buildAndSendNotification("Erreur", "Erreur l.102::admin/bddDisplay.php ...", "Erreur inconnue l.102::admin/bddDisplay.php lors de l'ajout d'une ligne dans la base de données '" . htmlspecialchars($_GET['bdd_name']) . "' par l'utilisateur à l'id " . $session->getUserSession()['id'] . " : " . $e, true);
 					}
 				}
 				// -------------------------------------------------------------------------------------------------
@@ -193,6 +195,8 @@
 					catch (Exception $e) {
 						$dispSelect = true;
 						$gameTextMsg = "Erreur inconnue : " . $e;
+
+						$admin_app_notif->buildAndSendNotification("Erreur", "Erreur l.199::admin/bddDisplay.php ...", "Erreur inconnue l.199::admin/bddDisplay.php lors de la supression de la ligne à l'id " . htmlspecialchars($_GET['line_id']) . " de la base de données '" . htmlspecialchars($_GET['bdd_name']) . "' par l'utilisateur à l'id " . $session->getUserSession()['id'] . " : " . $e, true);
 					}
 				}
 				// -------------------------------------------------------------------------------------------------
@@ -254,6 +258,8 @@
 					catch (Exception $e) {
 						$dispSelect = true;
 						$gameTextMsg = "Erreur inconnue : " . $e;
+
+						$admin_app_notif->buildAndSendNotification("Erreur", "Erreur l.262::admin/bddDisplay.php ...", "Erreur inconnue l.262::admin/bddDisplay.php lors de la modification de la ligne à l'id " . htmlspecialchars($_POST['line_id']) . " dans la base de données '" . htmlspecialchars($_GET['bdd_name']) . "' par l'utilisateur à l'id " . $session->getUserSession()['id'] . " : " . $e, true);
 					}
 				}
 				// -------------------------------------------------------------------------------------------------

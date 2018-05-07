@@ -54,14 +54,12 @@
 					<h3 class=\'w3-center\' id=\'game-title\'>VOUS JOUEZ AU SUDOKU</h3>
 					<div class="game-script">
 						<p id="end-script">Vous avez gagné cette partie et avez gagné un lot ! Si vous n\'êtes pas redirigé dans quelques secondes, veuillez contacter un administrateur puis cliquer sur le bouton suivant :<button class="bords-ronds w3-button w3-black w3-right w3-section" onclick="document.location.href=\'/win_page#lots\'"><i class="fa fa-paper-plane"></i> Cliquez ici</button>
-						<p id="game-javascript">
-							window.location.replace("/win_page#lots");
-						</p>
+						<p id="game-javascript"></p>
 					</div>';
 			}
 
 			$_SESSION['game_save_pay_1'] = $this;
-			$this->gameText = "Vos choix sont incorrects, veuillez essayer une autre combinaison. Si vous devez recharger la page, veuillez noter vos dernières réponses car ces dernières seront supprimées.";
+			$this->gameText = "Vos choix sont incorrects, veuillez essayer une autre combinaison. Si vous devez recharger la page, veuillez noter sur un support papier vos dernières réponses car ces dernières seront supprimées.";
 
 			return $this->print_sudoku($this->sudoku_user, $provArray);
 		}

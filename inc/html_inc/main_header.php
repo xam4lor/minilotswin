@@ -107,7 +107,7 @@
 	</head>
 
 	<body>
-		<?php include_once 'analytics_tracking.php' ?>
+		<?php include_once 'analytics_tracking.php'; ?>
 
 		<div class="w3-top">
 			<div class="popup_main w3-animate-top" id="element_to_display" style="display: none;">

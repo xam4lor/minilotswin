@@ -224,9 +224,9 @@
 
 
 
-							else { //DEBUG : ERREUR / TENTATIVE DE PIRATAGE -------------------------------
+							else {
 								?>
-								<p>Vous n'avez pas rempli tous les champs. Si c'est le cas, il y a une erreur dans le type de lot choisi, veuillez contacter un administrateur ci-dessous.</p>
+								<p>Vous n'avez pas rempli tous les champs.</p>
 								<?php
 							}
 
@@ -348,9 +348,9 @@
 
 
 
-							else { //DEBUG : ERREUR / TENTATIVE DE PIRATAGE ------------------
+							else {
 								?>
-								<p>Erreur dans le type de lot choisi, veuillez contacter un administrateur ci-dessous.</p>
+								<p>Erreur dans le type de lot choisi.</p>
 								<?php
 							}
 						}

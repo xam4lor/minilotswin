@@ -146,11 +146,12 @@
 													<?php
 												}
 												else {
+													$admin_app_notif->buildAndSendNotification("Erreur", "Erreur l.149::account/index.php ...", "Erreur l.149::account/index.php lors de l'affichage d'une clé sur le compte de l'utilisateur à l'id " . $session->getUserSession()['id'] . " : le type de la clé '" . $donnees['type'] . "' à l'id " . $donnees['id'] . " contenu dans la base de données 'lots_list' est incorrect.", true);
 													?>
 														<tr>
 															<td><b>Erreur</b></td>
 															<td><b>Erreur</b></td>
-															<td colspan="2">Veuillez contacter un administrateur</td>
+															<td colspan="2">Un administrateur a été informé de l'erreur</td>
 														</tr>
 													<?php
 												}

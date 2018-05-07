@@ -5,7 +5,6 @@
 	$lots_gestion = new LotsGestion();
 ?>
 
-	<!-- 1ère image transition -->
 	<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
 		<div class="w3-display-middle" style="white-space:nowrap;">
 			<span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MINI-LOTS</span>
@@ -33,7 +32,6 @@
 	?>
 
 		<div id="lots">
-		<!-- Container -> A propos du site -->
 			<div class="w3-content w3-container w3-padding-64">
 				<h3 class="w3-center">RETIRER VOS LOTS</h3>
 
@@ -60,15 +58,15 @@
 					else {
 						//UTILISATEUR AUTORISE A ACCEDER AUX LOTS
 						if(substr($_SESSION['has_win'], -1) == '0') {
-							$canGetLot = $lots_gestion->getRandomFreeLot($bdd, $session);
+							$canGetLot = $lots_gestion->getRandomFreeLot($bdd, $session, $admin_app_notif);
 						}
 						else if(substr($_SESSION['has_win'], -1) == '1') {
-							$canGetLot = $lots_gestion->getRandomSudokuLot($bdd, $session);
+							$canGetLot = $lots_gestion->getRandomSudokuLot($bdd, $session, $admin_app_notif);
 
 							if($canGetLot) $session->addOneSudokuPartyPlayed();
 						}
 						else if(substr($_SESSION['has_win'], -1) == '2') {
-							$canGetLot = $lots_gestion->getRandomMorpionPayLot($bdd, $session);
+							$canGetLot = $lots_gestion->getRandomMorpionPayLot($bdd, $session, $admin_app_notif);
 
 							if($canGetLot) $session->addOneMorpionPartyPlayed();
 						}
@@ -88,7 +86,6 @@
 						?>
 
 						<div id="lots">
-						<!-- Container -> A propos du site -->
 							<div class="w3-content w3-container">
 								<p class="reponse-text"><?php echo $message_text ?></p>
 

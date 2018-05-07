@@ -11,7 +11,7 @@
 	// ----- INITIATION DES VARIABLES DES FONCTIONS -----
 	$config = Config::getInstance();
 	$bdd = App::getDatabase($config->getAppConfig());
-	$admin_app_notif = AdminAppNotification::getDatabase($bdd, $config->getAppConfig()['authorization_key']);
+	$admin_app_notif = AdminAppNotification::getInstance($bdd, $config->getAppConfig()['authorization_key']);
 	$config->setupParameters($bdd);
 	$encryption_key = EncryptionKey::getInstance($config->getEncryptionKeyConfig());
 	$params = Parameters::getInstance($config->getParametersConfig());

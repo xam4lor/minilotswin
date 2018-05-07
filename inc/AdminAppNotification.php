@@ -24,13 +24,32 @@ class AdminAppNotification {
 	}
 
 
+	public function buildAndSendNotification($title, $body, $long_body = null, $is_for_developper = false) {
+		$custom_array = array(
+			'title' => $title,
+			'body' => $body,
+			'is_for_developper' => $is_for_developper
+		);
+
+		if($long_body === null)
+			$custom_array['long_body'] = $body;
+		else
+			$custom_array['long_body'] = $long_body;
+
+		$fields = array(
+			'data' => $custom_array
+		);
+
+		return $this->sendNotification($fields);
+	}
+
 	public function sendNotification($fields) {
 		$fields['registration_ids'] = $this->tokens;
 		return $this->send_notification($fields);
 	}
 
 	public function actualisationTokens() {
-		$this->getTokens();
+		return $this->tokens = $this->getTokens();
 	}
 
 

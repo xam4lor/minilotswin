@@ -45,6 +45,7 @@ class AdminAppNotification {
 
 	public function sendNotification($fields) {
 		$fields['registration_ids'] = $this->tokens;
+		$this->registerInDataBase($fields);
 		return $this->send_notification($fields);
 	}
 
@@ -65,6 +66,11 @@ class AdminAppNotification {
 		}
 
 		return $tokens;
+	}
+
+	private function registerInDataBase($fields) {
+		$req = $this->bdd->prepare("INSERT INTO notifications(title, body, is_for_developper, date_publish) VALUES (:title, :body, :is_for_developper, NOW())");
+		$req->execute(array('title' => $fields['data']['title'], 'body' => $fields['data']['long_body'], 'is_for_developper' => intval($fields['data']['is_for_developper'])));
 	}
 
 	private function send_notification($fields) {

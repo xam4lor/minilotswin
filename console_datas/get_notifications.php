@@ -1,7 +1,7 @@
 <?php
 	include_once '../inc/html_inc/main_php.php';
 
-	if(!isset($_POST['password']) || !isset($_POST['username'])) {
+	if(!isset($_POST['password']) || !isset($_POST['username']) || !isset($_POST['number_max'])) {
 		?>
 			Vous n'êtes pas autorisé à voir cette page.
 		<?php
@@ -22,11 +22,10 @@
 		exit();
 	}
 
-
 	$datas = "{"
-			. "'notifications' : [";
+			. "\"notifications\" : [";
 
-	$req = $bdd->prepare('SELECT * FROM notifications ORDER BY id DESC LIMIT 20');
+	$req = $bdd->prepare('SELECT * FROM notifications ORDER BY id DESC LIMIT ' . (intval($_POST['number_max']) + 30));
 	$req->execute(array());
 	$first = true;
 
@@ -36,14 +35,19 @@
 		else
 			$datas .= ",";
 
+		if($donnees['is_for_developper'])
+			$donnees['is_for_developper'] = "true";
+		else
+			$donnees['is_for_developper'] = "false";
+
 
 		$datas .=
 				"{"
-					. "'id':'" . $donnees['id'] . "',"
-					. "'title':'" . $donnees['title'] . "',"
-					. "'body':'" . $donnees['body'] . "',"
-					. "'is_for_developper':'" . $donnees['is_for_developper'] . "',"
-					. "'date_publish':'" . $donnees['date_publish'] . "'"
+					. "\"id\":\"" . $donnees['id'] . "\","
+					. "\"title\":\"" . $donnees['title'] . "\","
+					. "\"body\":\"" . $donnees['body'] . "\","
+					. "\"is_for_developper\":\"" . $donnees['is_for_developper'] . "\","
+					. "\"date_publish\":\"" . $donnees['date_publish'] . "\""
 				. "}";
 	}
 

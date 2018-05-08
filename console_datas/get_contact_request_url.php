@@ -1,7 +1,7 @@
 <?php
 	include_once '../inc/html_inc/main_php.php';
 
-	if(!isset($_POST['password']) || !isset($_POST['username'])) {
+	if(!isset($_POST['password']) || !isset($_POST['username']) || !isset($_POST['number_max'])) {
 		?>
 			Vous n'êtes pas autorisé à voir cette page.
 		<?php
@@ -26,8 +26,8 @@
 	$datas = "{"
 			. "'contact_request' : [";
 
-	$req = $bdd->prepare('SELECT * FROM requetes_contact');
-	$req->execute(array());
+	$req = $bdd->prepare('SELECT * FROM requetes_contact ORDER BY id DESC LIMIT ' . intval($_POST['number_max']));
+	$req->execute();
 	$first = true;
 
 	while ($donnees = $req->fetch()) {

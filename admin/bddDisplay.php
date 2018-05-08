@@ -459,10 +459,13 @@
 					<select class="bords-ronds w3-button w3-black w3-section" onchange="selectBdd(this.value)">
 						<option value="">Selectionnez la base de donnée</option>
 						<option value="account">Comptes (account)</option>
-						<option value="lots_list">Liste des lots (lots_list)</option>
-						<option value="requetes_contact">Requêtes du site (requetes_contact)</option>
+						<option value="admin_app_key">Liste des clés pour l'application administratrice (admin_app_key)</option>
+						<option value="config">Configuration du site (config)</option>
 						<option value="connectes">Utilisateurs connectés (connectes)</option>
+						<option value="lots_list">Liste des lots (lots_list)</option>
+						<option value="notifications">Notifications envoyées du site (notifications)</option>
 						<option value="payments">Liste des paiements (payments)</option>
+						<option value="requetes_contact">Requêtes du site (requetes_contact)</option>
 					</select>
 
 					<br />
